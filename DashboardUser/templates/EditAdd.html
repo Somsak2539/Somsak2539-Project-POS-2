@@ -1,0 +1,367 @@
+{% extends "LayoutDashbords.html"%}
+{% load humanize %}
+
+{% load static %}
+
+
+
+
+
+
+{% block title%}
+   รายการขายของสำหรับการขายของ
+{% endblock %}
+
+
+
+{% block content%}
+
+<div id="cartSidePenal" drawer-end="" class="fixed inset-y-0 flex flex-col w-full transition-transform duration-300 ease-in-out transform bg-white shadow dark:bg-zink-600 ltr:right-0 rtl:left-0 md:w-96 z-drawer show">
+    <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
+        <div class="grow">
+            <h5 class="mb-0 text-16">Shopping Cart <span class="inline-flex items-center justify-center w-5 h-5 ml-1 text-[11px] font-medium border rounded-full text-white bg-custom-500 border-custom-500">3</span></h5>
+        </div>
+        <div class="shrink-0">
+            <button data-drawer-close="cartSidePenal" class="transition-all duration-150 ease-linear text-slate-500 hover:text-slate-800"><i data-lucide="x" class="size-4"></i></button>
+        </div>
+    </div>
+    <div class="px-4 py-3 text-sm text-green-500 border border-transparent bg-green-50 dark:bg-green-400/20">
+        <span class="font-bold underline">starcode50</span> Coupon code applied successfully.
+    </div>
+    <div>
+        <div class="h-[calc(100vh_-_370px)] p-4 overflow-y-auto product-list">
+            <div class="flex flex-col gap-4">
+                <div class="flex gap-2 product">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-md bg-slate-100 shrink-0 dark:bg-zink-500">
+                        <img src="assets/images/img-012.png" alt="" class="h-8">
+                    </div>
+                    <div class="overflow-hidden grow">
+                        <div class="ltr:float-right rtl:float-left">
+                            <button class="transition-all duration-150 ease-linear text-slate-500 dark:text-zink-200 hover:text-red-500 dark:hover:text-red-500"><i data-lucide="x" class="size-4"></i></button>
+                        </div>
+                        <a href="#!" class="transition-all duration-200 ease-linear hover:text-custom-500">
+                            <h6 class="mb-1 text-15">Cotton collar t-shirts for men</h6>
+                        </a>
+                        <div class="flex items-center mb-3">
+                            <h5 class="text-base product-price"> $<span>155.32</span></h5>
+                            <div class="font-normal rtl:mr-1 ltr:ml-1 text-slate-500 dark:text-zink-200">(Fashion)</div>
+                        </div>
+                        <div class="flex items-center justify-between gap-3">
+                            <div class="inline-flex text-center input-step">
+                                <button type="button" class="border w-9 h-9 leading-[15px] minus bg-white dark:bg-zink-700 dark:border-zink-500 ltr:rounded-l rtl:rounded-r transition-all duration-200 ease-linear border-slate-200 text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50"><i data-lucide="minus" class="inline-block size-4"></i></button>
+                                <input type="number" class="w-12 text-center h-9 border-y product-quantity dark:bg-zink-700 focus:shadow-none dark:border-zink-500" value="2" min="0" max="100" readonly="">
+                                <button type="button" class="transition-all duration-200 ease-linear bg-white border dark:bg-zink-700 dark:border-zink-500 ltr:rounded-r rtl:rounded-l w-9 h-9 border-slate-200 plus text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50"><i data-lucide="plus" class="inline-block size-4"></i></button>
+                            </div>
+                            <h6 class="product-line-price">310.64</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2 product">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-md bg-slate-100 shrink-0 dark:bg-zink-500">
+                        <img src="assets/images/img-03.png" alt="" class="h-8">
+                    </div>
+                    <div class="overflow-hidden grow">
+                        <div class="ltr:float-right rtl:float-left">
+                            <button class="transition-all duration-150 ease-linear text-slate-500 dark:text-zink-200 hover:text-red-500 dark:hover:text-red-500"><i data-lucide="x" class="size-4"></i></button>
+                        </div>
+                        <a href="#!" class="transition-all duration-200 ease-linear hover:text-custom-500">
+                            <h6 class="mb-1 text-15">Like style travel black handbag</h6>
+                        </a>
+                        <div class="flex items-center mb-3">
+                            <h5 class="text-base product-price"> $<span>349.95</span></h5>
+                            <div class="font-normal rtl:mr-1 ltr:ml-1 text-slate-400 dark:text-zink-200">(Luggage)</div>
+                        </div>
+                        <div class="flex items-center justify-between gap-3">
+                            <div class="inline-flex text-center input-step">
+                                <button type="button" class="border w-9 h-9 leading-[15px] minus bg-white dark:bg-zink-700 dark:border-zink-500 ltr:rounded-l rtl:rounded-r transition-all duration-200 ease-linear border-slate-200 text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50"><i data-lucide="minus" class="inline-block size-4"></i></button>
+                                <input type="number" class="w-12 text-center h-9 border-y product-quantity dark:bg-zink-700 focus:shadow-none dark:border-zink-500" value="1" min="0" max="100" readonly="">
+                                <button type="button" class="transition-all duration-200 ease-linear bg-white border dark:bg-zink-700 dark:border-zink-500 ltr:rounded-r rtl:rounded-l w-9 h-9 border-slate-200 plus text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50"><i data-lucide="plus" class="inline-block size-4"></i></button>
+                            </div>
+                            <h6 class="product-line-price">349.95</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2 product">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-md bg-slate-100 shrink-0 dark:bg-zink-500">
+                        <img src="assets/images/img-09.png" alt="" class="h-8">
+                    </div>
+                    <div class="overflow-hidden grow">
+                        <div class="ltr:float-right rtl:float-left">
+                            <button class="transition-all duration-150 ease-linear text-slate-500 dark:text-zink-200 hover:text-red-500 dark:hover:text-red-500"><i data-lucide="x" class="size-4"></i></button>
+                        </div>
+                        <a href="#!" class="transition-all duration-200 ease-linear hover:text-custom-500">
+                            <h6 class="mb-1 text-15">Blive Printed Men Round Neck</h6>
+                        </a>
+                        <div class="flex items-center mb-3">
+                            <h5 class="text-base product-price">$<span>546.74</span></h5>
+                            <div class="font-normal rtl:mr-1 ltr:ml-1 text-slate-400 dark:text-zink-200">(Fashion)</div>
+                        </div>
+                        <div class="flex items-center justify-between gap-3">
+                            <div class="inline-flex text-center input-step">
+                                <button type="button" class="border w-9 h-9 leading-[15px] minus bg-white dark:bg-zink-700 dark:border-zink-500 ltr:rounded-l rtl:rounded-r transition-all duration-200 ease-linear border-slate-200 text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50"><i data-lucide="minus" class="inline-block size-4"></i></button>
+                                <input type="number" class="w-12 text-center h-9 border-y product-quantity dark:bg-zink-700 focus:shadow-none dark:border-zink-500" value="4" min="0" max="100" readonly="">
+                                <button type="button" class="transition-all duration-200 ease-linear bg-white border dark:bg-zink-700 dark:border-zink-500 ltr:rounded-r rtl:rounded-l w-9 h-9 border-slate-200 plus text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50"><i data-lucide="plus" class="inline-block size-4"></i></button>
+                            </div>
+                            <h6 class="product-line-price end">2,186.96</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-slate-200 dark:border-zink-500">
+
+            <table class="w-full mb-3 ">
+                <tbody class="table-total">
+                    <tr>
+                        <td class="py-2">Sub Total :</td>
+                        <td class="text-right cart-subtotal">$2,847.55</td>
+                    </tr>
+                    <tr>
+                        <td class="py-2">Discount <span class="text-muted">(starcode50)</span>:</td>
+                        <td class="text-right cart-discount">-$476.00</td>
+                    </tr>
+                    <tr>
+                        <td class="py-2">Shipping Charge :</td>
+                        <td class="text-right cart-shipping">$89.00</td>
+                    </tr>
+                    <tr>
+                        <td class="py-2">Estimated Tax (12.5%) : </td>
+                        <td class="text-right cart-tax">$70.62</td>
+                    </tr>
+                    <tr class="font-semibold">
+                        <td class="py-2">Total : </td>
+                        <td class="text-right cart-total">$2,531.17</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="flex items-center justify-between gap-3">
+                <a href="apps-ecommerce-product-grid.html" class="w-full text-white btn bg-slate-500 border-slate-500 hover:text-white hover:bg-slate-600 hover:border-slate-600 focus:text-white focus:bg-slate-600 focus:border-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:border-slate-600 active:ring active:ring-slate-100 dark:ring-slate-400/10">Continue Shopping</a>
+                <a href="apps-ecommerce-checkout.html" class="w-full text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20">Checkout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm">
+
+    <div class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
+        <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
+
+            <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
+                <div class="grow">
+                    <h5 class="text-16">เพิ่มใหม่ & ทำการแก้ไข </h5>
+                </div>
+                <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
+                    <li class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
+                        <a href="#!" class="text-slate-400 dark:text-zink-200">Products</a>
+                    </li>
+                    <li class="text-slate-700 dark:text-zink-100">
+                        Add New
+                    </li>
+                </ul>
+            </div>
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-x-5">
+
+    
+
+                <div class="xl:col-span-9">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-4 text-15">ทำการเปลี่ยนแปลงข้อมูลสินค้า</h6>
+
+                            <form method="POST" action="{% url 'EditAdd' product.id %}">
+
+                                {% csrf_token %}
+                            
+                                <div class="grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-12">
+                                    
+                                    <!-- ✅ ประเภทสินค้า -->
+                                    <div class="xl:col-span-4">
+                                        <label for="taxApplicable" class="inline-block mb-2 text-base font-medium">ประเภทสินค้า</label>
+                                        
+                                        <select name="taxApplicable" id="taxApplicable" required
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200">
+                                            <option value="">กรุณาเลือกประเภทสินค้า</option>
+                                            {% for category in filter2 %}
+                                                <option value="{{ category.id }}" {% if category.id == product.category.id %}selected{% endif %}>
+                                                    {{ category.name }}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                            
+
+                                    <!-- ✅ ชื่อสินค้า -->
+                                    <div class="xl:col-span-4">
+                                        <label for="product_name" class="inline-block mb-2 text-base font-medium">ชื่อสินค้า</label>
+                                        <input type="text" id="product_name" name="product_name" value="{{ product.name }}" required
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" 
+                                            placeholder="กรอกชื่อสินค้า">
+                                    </div>
+                            
+                                    <!-- ✅ คำอธิบายสินค้า -->
+                                    <div class="lg:col-span-2 xl:col-span-12">
+                                        <label for="productDescription" class="inline-block mb-2 text-base font-medium">Description</label>
+                                        <textarea id="productDescription" name="productDescription" rows="5" required
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200">
+                                            {{ product.description }}
+                                        </textarea>
+                                    </div>
+                            
+                                    <!-- ✅ ราคา -->
+                                    <div class="xl:col-span-4">
+                                        <label for="product_price" class="inline-block mb-2 text-base font-medium">ราคาสินค้า</label>
+                                        <input type="number" id="product_price" name="product_price" step="0.01" required
+                                            value="{{ product.price }}" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200">
+                                    </div>
+                            
+                                    <!-- ✅ Stock -->
+                                    <div class="xl:col-span-4">
+                                        <label for="stock" class="inline-block mb-2 text-base font-medium">Stock</label>
+                                        <input type="number" step="any" id="stock" name="stock" required value="{{ product.stock }}"
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200">
+                                    </div>
+                            
+                                    <!-- ✅ กำไรต่อราคา -->
+                                    <div class="xl:col-span-4">
+                                        <label for="profitprice" class="inline-block mb-2 text-base font-medium">กำไรต่อราคา</label>
+                                        <input type="number" id="profitprice" name="profitprice" step="0.01" required value="{{ product.profitprice }}"
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200">
+                                    </div>
+                            
+                                    <!-- ✅ Barcode -->
+                                    <div class="xl:col-span-4">
+                                        <label for="barcode" class="inline-block mb-2 text-base font-medium">เลขบาร์โค้ด</label>
+                                        <input type="text" id="barcode" name="barcode" required value="{{ product.barcode }}"
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200">
+                                    </div>
+                            
+                                </div>
+                            
+                                <div class="flex justify-end gap-2 mt-4">
+                                    <!-- ✅ ปุ่ม Reset -->
+                                    <button type="reset" class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100">
+                                        Reset
+                                    </button>
+                            
+                                    <!-- ✅ ปุ่ม SAVE -->
+                                    <button data-modal-target="smallModal" id="saveButton" type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20" disabled>บันทึก</button>
+                                    <div id="smallModal" modal-center="" class="fixed flex flex-col hidden transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
+                                      <div class="w-screen md:w-[25rem] bg-white shadow rounded-md dark:bg-zink-600 flex flex-col h-full">
+                                            <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
+                                                <div class="px-4 py-3 text-sm text-green-500 border border-transparent rounded-md bg-green-50 dark:bg-green-400/20">
+                                                    <span class="font-bold">....</span> ทำการบันทึก ID {{ product.id }} เรียบร้อย
+                                                </div>
+                                                      <button data-modal-close="smallModal" class="transition-all duration-200 ease-linear text-slate-500 hover:text-red-500 dark:text-zink-200 dark:hover:text-red-500"><i data-lucide="x" class="size-5"></i></button>
+                                                       </div>
+                                                     <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
+                                                     <h5 class="mb-3 text-16">{{ product.name }} </h5>
+                                                     <p class="text-slate-500 dark:text-zink-200"> {{ product.description }}</p>
+                                                      </div>
+                                                     <div class="flex items-center justify-between p-4 mt-auto border-t border-slate-200 dark:border-zink-500">
+                                                        
+
+
+                                                        <div class="card-body">
+                                                          
+                                                            <div class="px-4 py-3 text-sm text-green-500 border border-transparent rounded-md bg-green-50 dark:bg-green-400/20">
+                                                                <span class="font-bold">....</span> บันทึกเรียบร้อย
+                                                            </div>
+                                                            <div class="pt-2">
+                                                                
+                                                                <div class="w-full bg-slate-200 rounded-full h-2.5 mb-0 dark:bg-zink-600">
+                                                                    <div class="bg-orange-500 h-2.5 rounded-full animate-progress relative" style="width: 250%"><div class="absolute ltr:right-0 rtl:left-0 inline-block px-2 py-0.5 text-[10px] text-white bg-orange-500 rounded -top-6 after:absolute after:border-4 ltr:after:right-1/2 rtl:after:left-1/2 after:-bottom-2 after:border-transparent after:border-t-orange-500">100%</div></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+
+                                                                     
+
+  
+
+
+        
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                </div>
+                            
+                            </form>
+                        </div>
+                    </div><!--end card-->
+                </div><!--end col-->
+
+             
+
+                
+                <div class="xl:col-span-3">
+                   
+                    <div class="card sticky top-[calc(theme('spacing.header')_*_1.3)]">
+                        
+                        <div class="card-body">
+                            <h6 class="mb-4 text-15">{{ product.name }}</h6>
+
+                            <div class="px-5 py-8 rounded-md bg-sky-50 dark:bg-zink-600">
+                                <img src="{{ product.image.url }}" alt="" class="block mx-auto h-44">
+                            </div>
+
+                            <div class="mt-3">
+                                <h5 class="mb-2">{{product.price}} <small class="font-normal line-through"></small></h5>
+                                <h6 class="mb-1 text-15">{{ product.name }}</h6>
+                               
+                            </div>
+                         
+                            
+
+                           
+                        </div>
+                      
+                       
+                    </div><!--end card-->
+                   
+                </div><!--end col-->
+                
+
+
+            </div><!--end grid-->
+
+        </div>
+        <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+    <footer class="ltr:md:left-vertical-menu rtl:md:right-vertical-menu group-data-[sidebar-size=md]:ltr:md:left-vertical-menu-md group-data-[sidebar-size=md]:rtl:md:right-vertical-menu-md group-data-[sidebar-size=sm]:ltr:md:left-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:md:right-vertical-menu-sm absolute right-0 bottom-0 px-4 h-14 group-data-[layout=horizontal]:ltr:left-0  group-data-[layout=horizontal]:rtl:right-0 left-0 border-t py-3 flex items-center dark:border-zink-600">
+        <div class="group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl w-full">
+            <div class="grid items-center grid-cols-1 text-center lg:grid-cols-2 text-slate-400 dark:text-zink-200 ltr:lg:text-left rtl:lg:text-right">
+                <div>
+                    <script>document.write(new Date().getFullYear())</script> Somsak Sonngai
+                </div>
+                <div class="hidden lg:block">
+                    <div class="ltr:text-right rtl:text-left">
+                        Design & Develop by Somsak Sonngai
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+{% endblock%}

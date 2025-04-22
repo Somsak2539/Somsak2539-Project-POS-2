@@ -1,0 +1,1431 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 740px 650px ; /* 2 คอลัมน์ ขนาดคงที่ */
+    grid-template-rows: 320px 320px;    /* 2 แถว ขนาดคงที่ */
+   
+    padding: 10px;
+    
+  
+  }
+  
+  
+  
+  .box {
+    padding: 5px;
+  
+    
+    background-color:#edede0;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5); /* ระยะห่าง แนวนอน แนวตั้ง ความเบลอ สี */
+    overflow: hidden;          /* ซ่อนเนื้อหาที่ล้น */
+    white-space: nowrap;       /* ป้องกันการตัดบรรทัด */
+    text-overflow: ellipsis;   /* เพิ่ม ... เมื่อข้อความล้น */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+  }body{
+  
+   display: flex;
+  
+  
+  
+  }
+  
+  .A{
+    display:flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* เส้นเบลอรอบกล่อง */
+    border-radius: 15px;
+    color: rgb(0, 0, 0);
+    background: #fffefc;
+    height:250px ;
+    width:700px;
+  
+   
+   
+  }.aa1{
+  
+    display: flex;
+    flex-direction: row;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5); /* ระยะห่าง แนวนอน แนวตั้ง ความเบลอ สี */
+    border-radius: 15px;
+  
+    margin-left: -70px;
+    
+  }.p1{
+    display: flex;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+     color: #ffffff;
+     border-radius: 15px;
+     padding: 10px;
+     margin: 10px;
+     width: 200px;
+     background: #2a2929;
+     
+  }
+  .img1 img{
+  
+    width: 100%;
+    height: 100%;
+    
+  
+  }
+  h4{
+  
+    display: flex;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5); /* ระยะห่าง แนวนอน แนวตั้ง ความเบลอ สี */
+    height: 40px;
+    width: 200px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: -30px;
+  
+    border-radius: 15px;
+  }
+  
+  
+  
+    .img1{
+  
+      display: flex;
+      box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5); /* ระยะห่าง แนวนอน แนวตั้ง ความเบลอ สี */
+      height: 185px;
+      width: 185px;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-top: 5px;
+      margin-right: 100px;
+    
+  
+    }.imgMangae{
+  
+  
+      display: flex;
+      flex-direction: column;
+      gap:3.1 px;
+      color: rgb(36, 36, 35);
+      margin-top: 15px;
+      padding-left: 20px;
+      text-align: center;
+      justify-content: center;
+    }
+  
+    .custom-button {
+      background-color: #4CAF50; /* สีพื้นหลัง */
+      border: none; /* ไม่มีขอบ */
+      color: white; /* สีตัวอักษร */
+      padding: 15px 32px; /* ระยะห่างภายในปุ่ม */
+      text-align: center; /* จัดข้อความกึ่งกลาง */
+      text-decoration: none; /* ไม่มีเส้นใต้ */
+      display: inline-block; /* แสดงผลแบบอินไลน์บล็อก */
+      font-size: 20px; /* ขนาดตัวอักษร */
+      margin: 1px 1px; /* ระยะห่างภายนอกปุ่ม */
+      cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์ */
+      border-radius: 12px; /* มุมโค้งของปุ่ม */
+      height: 50px;
+      width: 100px;
+      transition: background-color 0.3s, transform 0.3s; /* การเปลี่ยนแปลงเมื่อโฮเวอร์ */
+  }
+  .custom-button:hover {
+    background-color: #45a049; /* สีพื้นหลังเมื่อโฮเวอร์ */
+    transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อโฮเวอร์ */
+  }.bb26{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* เส้นเบลอรอบกล่อง */
+    margin-top: -50px;
+    margin-right: 575px;
+    
+    
+  
+    
+  }
+  
+  
+  
+  .b22_1{
+  display: flex;
+  flex-direction: column;
+  
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* เส้นเบลอรอบกล่อง */
+  
+  margin-top: 100px;
+  
+  margin-left: -565px;
+  
+  }
+  
+  
+  .custom-button1 {
+    background-color: #4CAF50; /* สีพื้นหลัง */
+    border: none; /* ไม่มีขอบ */
+    color: white; /* สีตัวอักษร */
+    padding: 15px 32px; /* ระยะห่างภายในปุ่ม */
+    text-align: center; /* จัดข้อความกึ่งกลาง */
+    text-decoration: none; /* ไม่มีเส้นใต้ */
+    display: inline-block; /* แสดงผลแบบอินไลน์บล็อก */
+    font-size: 20px; /* ขนาดตัวอักษร */
+    margin: 1px 1px; /* ระยะห่างภายนอกปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์ */
+    border-radius: 12px; /* มุมโค้งของปุ่ม */
+    
+    height: 50px;
+  
+  
+    width: 300px;
+    transition: background-color 0.3s, transform 0.3s; /* การเปลี่ยนแปลงเมื่อโฮเวอร์ */
+  }
+  .custom-button1:hover {
+  background-color: #45a049; /* สีพื้นหลังเมื่อโฮเวอร์ */
+  transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อโฮเวอร์ */
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .custom-button4 {
+    background-color: #4CAF50; /* สีพื้นหลัง */
+    border: none; /* ไม่มีขอบ */
+    color: white; /* สีตัวอักษร */
+    padding: 15px 32px; /* ระยะห่างภายในปุ่ม */
+    text-align: center; /* จัดข้อความกึ่งกลาง */
+    text-decoration: none; /* ไม่มีเส้นใต้ */
+    display: inline-block; /* แสดงผลแบบอินไลน์บล็อก */
+    font-size: 20px; /* ขนาดตัวอักษร */
+    margin: 1px 1px; /* ระยะห่างภายนอกปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์ */
+    border-radius: 12px; /* มุมโค้งของปุ่ม */
+    height: 50px;
+    width: 300px;
+    transition: background-color 0.3s, transform 0.3s; /* การเปลี่ยนแปลงเมื่อโฮเวอร์ */
+  }
+  .custom-button4:hover {
+  background-color: #45a049; /* สีพื้นหลังเมื่อโฮเวอร์ */
+  transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อโฮเวอร์ */
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .custom-button5 {
+    background-color: #e01a00; /* สีพื้นหลัง */
+    border: none; /* ไม่มีขอบ */
+    color: white; /* สีตัวอักษร */
+    padding: 15px 32px; /* ระยะห่างภายในปุ่ม */
+    text-align: center; /* จัดข้อความกึ่งกลาง */
+    text-decoration: none; /* ไม่มีเส้นใต้ */
+    display: inline-block; /* แสดงผลแบบอินไลน์บล็อก */
+    font-size: 20px; /* ขนาดตัวอักษร */
+    margin: 1px 1px; /* ระยะห่างภายนอกปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์ */
+    border-radius: 12px; /* มุมโค้งของปุ่ม */
+    height: 50px;
+    width: 300px;
+    transition: background-color 0.3s, transform 0.3s; /* การเปลี่ยนแปลงเมื่อโฮเวอร์ */
+  }
+  .custom-button5:hover {
+  background-color: #dc2800; /* สีพื้นหลังเมื่อโฮเวอร์ */
+  transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อโฮเวอร์ */
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .custom-button6 {
+    background-color: #05abf8; /* สีพื้นหลัง */
+    border: none; /* ไม่มีขอบ */
+    color: rgb(230, 221, 221); /* สีตัวอักษร */
+    padding: 15px 32px; /* ระยะห่างภายในปุ่ม */
+    text-align: center; /* จัดข้อความกึ่งกลาง */
+    text-decoration: none; /* ไม่มีเส้นใต้ */
+    display: inline-block; /* แสดงผลแบบอินไลน์บล็อก */
+    font-size: 20px; /* ขนาดตัวอักษร */
+    margin: 1px 1px; /* ระยะห่างภายนอกปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์ */
+    border-radius: 12px; /* มุมโค้งของปุ่ม */
+    height: 50px;
+    width: 300px;
+    transition: background-color 0.3s, transform 0.3s; /* การเปลี่ยนแปลงเมื่อโฮเวอร์ */
+  }
+  .custom-button6:hover {
+  background-color: #0004ff; /* สีพื้นหลังเมื่อโฮเวอร์ */
+  transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อโฮเวอร์ */
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .table-container {
+    width: 100%;
+    max-height: 200px; /* กำหนดความสูงสูงสุดของคอนเทนเนอร์ */
+    overflow-y: auto; /* เพิ่มแถบเลื่อนแนวตั้งเมื่อเนื้อหาเกิน */
+    /*overflow-x: auto; /* เพิ่มแถบเลื่อนแนวนอนเมื่อเนื้อหาเกิน */
+    border: 1px solid #ddd; /* เส้นขอบรอบคอนเทนเนอร์ */
+    margin: 25px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 5px;
+    min-width: 400px;
+  }
+  
+  .styled-table thead tr {
+    position: sticky;
+    top: 0;
+    background-color: #ddedea;
+    border-radius: 15px;
+    color: #ffffff;
+    text-align: center;
+    z-index: 1; /* ทำให้ส่วนหัวอยู่ด้านบนสุด */
+  }
+  
+  .styled-table th{
+
+    color: #000000;
+    font-size: 8px;
+    padding: 12px 15px;
+    text-align: center;      /* จัดข้อความกึ่งกลางในแนวนอน */
+    vertical-align: middle;  /* จัดข้อความกึ่งกลางในแนวตั้ง */
+
+  }
+
+
+  .styled-table td {
+
+    color: #020af9;
+    font-size: 8px;
+    padding: 12px 15px;
+    text-align: center;      /* จัดข้อความกึ่งกลางในแนวนอน */
+    vertical-align: middle;  /* จัดข้อความกึ่งกลางในแนวตั้ง */
+  }
+  
+  .styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  
+  }
+  
+  .styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+  
+  }
+  
+  .controlTable{
+  
+    display: flex;
+    /*border: solid rgb(15, 15, 15) 1.7px;*/
+    margin-top: -30px;
+    width: 720px;
+    height: 245px;
+    color: #010101;
+   
+  }
+  
+  
+  
+  
+  
+  .result-box {
+   
+    width: 320px;
+    height: 60px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #007bff;
+    border-radius: 10px;
+    border: 3px solid #0056b3;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* ป้องกันข้อความล้น */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .result-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  .b21{
+   position: relative;
+   top:-100px;
+   right: -630px;
+  }
+  
+  
+  .manageImg2{
+
+    display: flex;
+    height: 140px;
+    width: 150px;
+  
+    
+  
+  
+  }.img2 img{
+  
+    width: 100%;
+    height: 100%;
+  }
+  .img2{
+  
+    position:relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* เส้นเบลอรอบกล่อง */
+    margin-top: 10px;
+    border-radius: 15px;
+    overflow: hidden;
+    top:-5px;
+  }img2 img{
+  
+    width: 100%;
+  }
+  
+  
+  h6 {
+    position: relative;
+    left: 150px;
+    text-align: center;
+    justify-content: center;
+    font-size: 12px;
+    top: -100px;
+    width: 150px;
+    color: #030303; /* สีแดง */
+    -webkit-text-stroke: 0.2px #ff1313; /* ขอบสีดำ หนา 1px */
+    font-weight: bold; /* ทำให้ตัวอักษรหนาขึ้น */
+
+    
+    
+  
+  }.box3{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  .custom-button2 {
+    background-color: #e9a001; /* สีพื้นหลัง */
+    border: none; /* ไม่มีขอบ */
+    color: white; /* สีตัวอักษร */
+    padding: 1px 1px; /* ระยะห่างภายในปุ่ม */
+    text-align: center; /* จัดข้อความกึ่งกลาง */
+    text-decoration: none; /* ไม่มีเส้นใต้ */
+    display: inline-block; /* แสดงผลแบบอินไลน์บล็อก */
+    font-size: 15px; /* ขนาดตัวอักษร */
+    margin: 1px 1px; /* ระยะห่างภายนอกปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์ */
+    border-radius: 12px; /* มุมโค้งของปุ่ม */
+    height: 45px;
+    width: 100px;
+    transition: background-color 0.3s, transform 0.3s; /* การเปลี่ยนแปลงเมื่อโฮเวอร์ */
+  }.custom-button2:hover {
+    background-color: #fab515; /* สีพื้นหลังเมื่อโฮเวอร์ */
+    transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อโฮเวอร์ */
+  
+
+
+
+  }
+  .custom-button3 {
+      background-color: #ff6200; /* สีพื้นหลัง */
+      border: none; /* ไม่มีขอบ */
+      color: rgb(0, 0, 0); /* สีตัวอักษร */
+      padding: 1px 1px; /* ระยะห่างภายในปุ่ม */
+      text-align: center; /* จัดข้อความกึ่งกลาง */
+      text-decoration: none; /* ไม่มีเส้นใต้ */
+      display: inline-block; /* แสดงผลแบบอินไลน์บล็อก */
+      font-size: 15px; /* ขนาดตัวอักษร */
+      margin: 1px 1px; /* ระยะห่างภายนอกปุ่ม */
+      cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์ */
+      border-radius: 12px; /* มุมโค้งของปุ่ม */
+      height: 45px;
+      width: 100px;
+      transition: background-color 0.3s, transform 0.3s; /* การเปลี่ยนแปลงเมื่อโฮเวอร์ */
+    }.custom-button3:hover {
+      background-color: #e71203; /* สีพื้นหลังเมื่อโฮเวอร์ */
+      transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อโฮเวอร์ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }.b1_1_1{
+    display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* เส้นเบลอรอบกล่อง */
+    border-radius: 15px;
+    
+  
+  }.b1_1{
+  
+  display:flex;
+  
+  margin-left:105px ;
+    
+  
+  
+  
+  }.contlrolBox1{
+   
+    position: relative;
+    display: inline-block;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* เส้นเบลอรอบกล่อง */
+    height: 15px;
+    border-radius: 15px;
+  
+     margin-top: -65px;
+  
+     color: red;
+  }
+  
+  
+  
+  .contlrolBox1-btn {
+  
+    position: relative;
+   top: 15px;
+    background-color: #e9a001; /* สีพื้นหลัง */
+    border: none; /* ไม่มีขอบ */
+    color: white; /* สีตัวอักษร */
+    padding: 1px 1px; /* ระยะห่างภายในปุ่ม */
+    text-align: center; /* จัดข้อความกึ่งกลาง */
+    text-decoration: none; /* ไม่มีเส้นใต้ */
+    display: inline-block; /* แสดงผลแบบอินไลน์บล็อก */
+    font-size: 60px; /* ขนาดตัวอักษร */
+    margin: 4px 2px; /* ระยะห่างภายนอกปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์ */
+    border-radius: 12px; /* มุมโค้งของปุ่ม */
+    height: 90px;
+    width: 100px;
+    transition: background-color 0.3s, transform 0.3s; /* การเปลี่ยนแปลงเมื่อโฮเวอร์ */
+  }.contlrolBox1-btn:hover {
+    background-color: #fab515; /* สีพื้นหลังเมื่อโฮเวอร์ */
+    transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อโฮเวอร์ */
+  
+  }
+  
+  
+  .contlrolBox1-opption {
+   
+       display: none;
+       position: relative;
+       
+       top:-50px;
+       right: 10px;
+       background-color: white;
+       box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+       z-index: 1;
+       margin-top: -250px;
+       min-width: 60px;
+       margin-right: -90px;
+       font-size: 20px;
+       border-radius: 25px;
+  
+  
+       max-height: 200px; /* กำหนดความสูงสูงสุด */
+       overflow-y: auto; /* เพิ่ม Scrollbar แนวตั้งเมื่อเนื้อหาเกิน */
+       font-size: 20px;
+      
+  
+       padding: 10px 0; /* เพิ่มระยะห่างด้านบนและล่าง */
+  
+  
+  
+  
+  
+  
+  
+  
+  }
+  .contlrolBox1-opption a {
+  
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .contlrolBox1-opption a:hover {
+    background-color: #f1f1f1; /* สีเมื่อเลือกตัวเลือก */
+  }
+  /* แสดงตัวเลือกเมื่อ hover */
+  .contlrolBox1:hover .contlrolBox1-opption {
+    display: block;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .box2ControlBotom{
+  
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* เส้นเบลอรอบกล่อง */
+    border-radius: 15px;
+   margin-left: 350px;
+    gap: 15px;
+  }
+  
+  .result-box7 {
+   
+    width: 350px;
+    height: 60px;
+    
+   
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #007bff;
+    border-radius: 10px;
+    border: 3px solid #0056b3;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .result-box7:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  
+  
+  
+  
+  
+  
+  .result-box8 {
+   
+    width: 350px;
+    height: 60px;
+    
+   
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #0cdd8d;
+    border-radius: 10px;
+    border: 3px solid #10fba5;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .result-box8:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .result-box9 {
+   
+    width: 350px;
+    height: 60px;
+    
+   
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #fb3220;
+    border-radius: 10px;
+    border: 3px solid #d01c08;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .result-box9:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .result-box4 {
+   
+    width: 150px;
+    height: 60px;
+    
+  
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #007bff;
+    border-radius: 10px;
+    border: 3px solid #0056b3;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  
+  
+  
+  
+  .result-box5 {
+   
+    width: 150px;
+    height: 60px;
+    
+  
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #0cdd8d;
+    border-radius: 10px;
+    border: 3px solid #10fba5;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  
+  
+  
+  
+  
+  
+  .result-box6 {
+   
+    width: 150px;
+    height: 60px;
+    
+  
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #fb3220;
+    border-radius: 10px;
+    border: 3px solid #d01c08;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  result-box1 {
+   
+    width: 350px;
+    height: 60px;
+    
+   
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #007bff;
+    border-radius: 10px;
+    border: 3px solid #0056b3;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .result-box1:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  .box2ControlBotom0{
+  
+  display: flex;
+  border: none;
+  margin-left: -350px;
+  
+  }
+  .box2ControlBotom1{
+  
+   position: relative;
+   display: flex;
+    gap: 15px;
+   
+    top:-15px;
+    left: 350px;
+    flex-direction: column;
+    border: none;
+    
+    margin-left: 170px;
+    padding: 15px;
+    
+    }
+  .removeBox1{
+    display: flex;
+    margin-right: 80px;
+  }
+  .b22{
+    display: flex;
+    margin-right: 80px;
+  }
+  
+  
+  
+  .tapbar{
+    display: flex;
+    flex-direction: column;
+  
+  }
+  
+    
+  
+  
+  
+  /*.contlrolBox2{
+   
+    position: relative;
+    display: inline-block;
+    border: solid red 1.5px;
+  
+     margin-top: -65px;
+  
+     color: red;
+  }*/
+  
+  
+  
+  .contlrolBox2-btn {
+  
+    position: relative;
+    top: 10px;
+    background-color: #e9a001; /* สีพื้นหลัง */
+    border: none; /* ไม่มีขอบ */
+    color: white; /* สีตัวอักษร */
+    padding: 1px 1px; /* ระยะห่างภายในปุ่ม */
+    text-align: center; /* จัดข้อความกึ่งกลาง */
+    text-decoration: none; /* ไม่มีเส้นใต้ */
+    display: inline-block; /* แสดงผลแบบอินไลน์บล็อก */
+    font-size: 60px; /* ขนาดตัวอักษร */
+    margin: 4px 2px; /* ระยะห่างภายนอกปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์ */
+    border-radius: 12px; /* มุมโค้งของปุ่ม */
+    height: 90px;
+    width: 100px;
+    transition: background-color 0.3s, transform 0.3s; /* การเปลี่ยนแปลงเมื่อโฮเวอร์ */
+  }.contlrolBox2-btn:hover {
+    background-color: #fab515; /* สีพื้นหลังเมื่อโฮเวอร์ */
+    transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อโฮเวอร์ */
+  
+  }
+  
+  .contlrolBox2-opption {
+   
+       display: none;
+       position: relative;
+       top: 180px;
+       right: -105px;
+       background-color: white;
+       box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+       z-index: 2;
+       margin-top: -200px;
+       min-width: 60px;
+       margin-right: -250px;
+       font-size: 20px;
+       border-radius: 25px;
+  
+  
+       max-height: 200px; /* กำหนดความสูงสูงสุด */
+       overflow-y: auto; /* เพิ่ม Scrollbar แนวตั้งเมื่อเนื้อหาเกิน */
+       font-size: 20px;
+       padding: 29px 0; /* เพิ่มระยะห่างด้านบนและล่าง */
+  
+  
+  
+  }
+  .contlrolBox2-opption a {
+  
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .contlrolBox2-opption a:hover {
+    background-color: #f1f1f1; /* สีเมื่อเลือกตัวเลือก */
+  }
+  /* แสดงตัวเลือกเมื่อ hover */
+  .contlrolBox2:hover .contlrolBox2-opption {
+    display: block;
+  }
+  
+  
+  
+  
+  
+  
+  
+  /*.contlrolBox3{
+   
+    position: relative;
+    display: inline-block;
+    border: solid red 1.5px;
+  
+     margin-top: -65px;
+  
+     color: red;
+  }*/
+  
+  
+  
+  .contlrolBox3-btn {
+  
+    position: relative;
+    top: 15px;
+    background-color: #e9a001; /* สีพื้นหลัง */
+    border: none; /* ไม่มีขอบ */
+    color: white; /* สีตัวอักษร */
+    padding: 1px 1px; /* ระยะห่างภายในปุ่ม */
+    text-align: center; /* จัดข้อความกึ่งกลาง */
+    text-decoration: none; /* ไม่มีเส้นใต้ */
+    display: inline-block; /* แสดงผลแบบอินไลน์บล็อก */
+    font-size: 60px; /* ขนาดตัวอักษร */
+    margin: 4px 2px; /* ระยะห่างภายนอกปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์ */
+    border-radius: 12px; /* มุมโค้งของปุ่ม */
+    height: 90px;
+    width: 100px;
+    transition: background-color 0.3s, transform 0.3s; /* การเปลี่ยนแปลงเมื่อโฮเวอร์ */
+  }.contlrolBox3-btn:hover {
+    background-color: #fab515; /* สีพื้นหลังเมื่อโฮเวอร์ */
+    transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อโฮเวอร์ */
+  
+  }
+  
+  .contlrolBox3-opption {
+   
+      display: none;
+       position: relative;
+       top:90px;
+       right: -105px;
+       background-color: white;
+       box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+       z-index: 2;
+       margin-top: -165px;
+       min-width: 60px;
+       margin-right: -250px;
+       font-size: 20px;
+       border-radius: 25px;
+  
+       padding-top: 1px;
+  
+  
+     
+       padding: 10px ; /* เพิ่มระยะห่างด้านบนและล่าง */
+  
+  
+  
+  }
+  .contlrolBox3-opption a {
+  
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .contlrolBox3-opption a:hover {
+    background-color: #f1f1f1; /* สีเมื่อเลือกตัวเลือก */
+  }
+  /* แสดงตัวเลือกเมื่อ hover */
+  .contlrolBox3:hover .contlrolBox3-opption {
+    display: block;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /*.contlrolBox4{
+   
+    position: relative;
+    display: inline-block;
+    border: solid rgb(174, 87, 87) 1.5px;
+  
+     margin-top: -65px;
+  
+     color: red;
+  }*/
+  
+  
+  
+  .contlrolBox4-btn {
+  
+    position: relative;
+    top:25px;
+    background-color: #e9a001; /* สีพื้นหลัง */
+    border: none; /* ไม่มีขอบ */
+    color: white; /* สีตัวอักษร */
+    padding: 1px 1px; /* ระยะห่างภายในปุ่ม */
+    text-align: center; /* จัดข้อความกึ่งกลาง */
+    text-decoration: none; /* ไม่มีเส้นใต้ */
+    display: inline-block; /* แสดงผลแบบอินไลน์บล็อก */
+    font-size: 60px; /* ขนาดตัวอักษร */
+    margin: 4px 2px; /* ระยะห่างภายนอกปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์ */
+    border-radius: 12px; /* มุมโค้งของปุ่ม */
+    height: 90px;
+    width: 100px;
+    transition: background-color 0.3s, transform 0.3s; /* การเปลี่ยนแปลงเมื่อโฮเวอร์ */
+  }.contlrolBox4-btn:hover {
+    background-color: #fab515; /* สีพื้นหลังเมื่อโฮเวอร์ */
+    transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อโฮเวอร์ */
+  
+  }
+  
+  .contlrolBox4-opption {
+   
+      display: none;
+       position: relative;
+       top:50px;
+       right: -105px;
+       background-color: white;
+       box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+       z-index: 5;
+       margin-top: -275px;
+       min-width: 60px;
+       margin-right: -250px;
+       font-size: 20px;
+       border-radius: 15px;
+       padding-top: 8px;
+  
+  
+      
+  
+  
+  }
+  .contlrolBox4-opption a {
+  
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .contlrolBox4-opption a:hover {
+    background-color: #f1f1f1; /* สีเมื่อเลือกตัวเลือก */
+  }
+  /* แสดงตัวเลือกเมื่อ hover */
+  .contlrolBox4:hover .contlrolBox4-opption {
+    display: block;
+  }
+  
+  
+  
+  
+  
+  
+  /*.contlrolBox16{
+   
+   
+    display: flex;
+    border: solid rgb(29, 7, 7) 1.7px;
+     color: rgb(237, 196, 196);
+  }*/
+  
+  
+  
+  .contlrolBox5-btn {
+  
+    position: relative;
+    top: 30px;
+    background-color: #e9a001; /* สีพื้นหลัง */
+    border: none; /* ไม่มีขอบ */
+    color: white; /* สีตัวอักษร */
+    padding: 1px 1px; /* ระยะห่างภายในปุ่ม */
+    text-align: center; /* จัดข้อความกึ่งกลาง */
+    text-decoration: none; /* ไม่มีเส้นใต้ */
+    display: inline-block; /* แสดงผลแบบอินไลน์บล็อก */
+    font-size: 60px; /* ขนาดตัวอักษร */
+    margin: 4px 2px; /* ระยะห่างภายนอกปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์ */
+    border-radius: 12px; /* มุมโค้งของปุ่ม */
+    height: 90px;
+    width: 100px;
+    transition: background-color 0.3s, transform 0.3s; /* การเปลี่ยนแปลงเมื่อโฮเวอร์ */
+  }.contlrolBox5-btn:hover {
+    background-color: #fab515; /* สีพื้นหลังเมื่อโฮเวอร์ */
+    transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อโฮเวอร์ */
+  
+  }
+  
+  .contlrolBox5-opption {
+   
+      display: none;
+       position: relative;
+       top:60px;
+       right: -105px;
+       background-color: white;
+       box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+       z-index: 2;
+       margin-top: -150px;
+       min-width: 60px;
+       margin-right: -250px;
+       height: 150px;
+       font-size: 20px;
+       border-radius: 25px;
+    
+       padding-top: 15px;
+  
+  
+  
+  }
+  .contlrolBox5-opption a {
+  
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .contlrolBox5-opption a:hover {
+    background-color: #f1f1f1; /* สีเมื่อเลือกตัวเลือก */
+  }
+  /* แสดงตัวเลือกเมื่อ hover */
+  .contlrolBox5:hover .contlrolBox5-opption {
+    display: block;
+  }
+  
+  
+  
+  
+  
+  
+  /*.contlrolBox68{
+   
+    position: relative;
+    display: inline-block;
+    border: solid red 1.5px;
+  
+     margin-top: -65px;
+  
+     color: red;
+  }*/
+  
+  
+  
+  .contlrolBox6-btn {
+  
+    position: relative;
+    top: 30px;
+    background-color: #e9a001; /* สีพื้นหลัง */
+    border: none; /* ไม่มีขอบ */
+    color: white; /* สีตัวอักษร */
+    padding: 1px 1px; /* ระยะห่างภายในปุ่ม */
+    text-align: center; /* จัดข้อความกึ่งกลาง */
+    text-decoration: none; /* ไม่มีเส้นใต้ */
+    display: inline-block; /* แสดงผลแบบอินไลน์บล็อก */
+    font-size: 60px; /* ขนาดตัวอักษร */
+    margin: 4px 2px; /* ระยะห่างภายนอกปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์ */
+    border-radius: 12px; /* มุมโค้งของปุ่ม */
+    height: 90px;
+    width: 100px;
+    transition: background-color 0.3s, transform 0.3s; /* การเปลี่ยนแปลงเมื่อโฮเวอร์ */
+  }.contlrolBox6-btn:hover {
+    background-color: #fab515; /* สีพื้นหลังเมื่อโฮเวอร์ */
+    transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อโฮเวอร์ */
+  
+  }
+  
+  .contlrolBox6-opption {
+   
+  
+       display: none;
+       position: relative;
+       top:150px;
+       right: -105px;
+       background-color: white;
+       box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+       z-index: 2;
+       margin-top: -320px;
+       min-width: 60px;
+       margin-right: -250px;
+       font-size: 20px;
+       border-radius: 25px;
+  
+  
+     
+  
+  
+  }
+  .contlrolBox6-opption a {
+  
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .contlrolBox6-opption a:hover {
+    background-color: #f1f1f1; /* สีเมื่อเลือกตัวเลือก */
+  }
+  /* แสดงตัวเลือกเมื่อ hover */
+  .contlrolBox6:hover .contlrolBox6-opption {
+    display: block;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .contlrolBox7-btn {
+  
+    position: relative;
+    top: 30px;
+    background-color: #e9a001; /* สีพื้นหลัง */
+    border: none; /* ไม่มีขอบ */
+    color: white; /* สีตัวอักษร */
+    padding: 1px 1px; /* ระยะห่างภายในปุ่ม */
+    text-align: center; /* จัดข้อความกึ่งกลาง */
+    text-decoration: none; /* ไม่มีเส้นใต้ */
+    display: inline-block; /* แสดงผลแบบอินไลน์บล็อก */
+    font-size: 60px; /* ขนาดตัวอักษร */
+    margin: 4px 2px; /* ระยะห่างภายนอกปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์ */
+    border-radius: 12px; /* มุมโค้งของปุ่ม */
+    height: 90px;
+    width: 100px;
+    transition: background-color 0.3s, transform 0.3s; /* การเปลี่ยนแปลงเมื่อโฮเวอร์ */
+  }.contlrolBox7-btn:hover {
+    background-color: #fab515; /* สีพื้นหลังเมื่อโฮเวอร์ */
+    transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อโฮเวอร์ */
+  
+  }
+  
+  .contlrolBox7-opption {
+   
+      display:none;
+       position: relative;
+       top:10px;
+       right: -105px;
+       background-color: white;
+       box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+       z-index: 2;
+       margin-top: -250px;
+       min-width: 60px;
+       margin-right: -250px;
+       font-size: 20px;
+       border-radius: 25px;
+  
+  
+      
+  
+  
+  }
+  .contlrolBox7-opption a {
+  
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .contlrolBox7-opption a:hover {
+    background-color: #f1f1f1; /* สีเมื่อเลือกตัวเลือก */
+  }
+  /* แสดงตัวเลือกเมื่อ hover */
+  .contlrolBox7:hover .contlrolBox7-opption {
+    display: block;
+  }
+  
+  
+  .aa1{
+    display:flex;
+    gap: 80px;
+  }
+  .aa2{
+  
+    display: flex;
+  
+    flex-direction: column;
+  
+  
+    
+    width: 150px;
+    text-align: center;
+    justify-content: center;
+    width: 150px;
+  
+  }
+  
+  .aa3{
+  
+  
+    display: flex;
+    
+    flex-direction: column;
+    
+  }.controlButton1{
+
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    left: 45px;
+  
+  }
+
+
+  button:focus,   
+  button:active {
+    outline: none;
+    box-shadow: none;
+}
+
+

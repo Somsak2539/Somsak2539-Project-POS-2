@@ -1,0 +1,493 @@
+{% extends "LayoutDashbords.html"%}
+{% load humanize %}
+
+{% load static %}
+
+
+
+
+
+
+{% block title%}
+   invoice 
+{% endblock %}
+
+
+
+{% block content%}
+
+
+<div id="cartSidePenal" drawer-end="" class="fixed inset-y-0 flex flex-col w-full transition-transform duration-300 ease-in-out transform bg-white shadow dark:bg-zink-600 ltr:right-0 rtl:left-0 md:w-96 z-drawer show">
+    <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
+        <div class="grow">
+            <h5 class="mb-0 text-16">เพิ่มรายการสินค้า <span class="inline-flex items-center justify-center w-5 h-5 ml-1 text-[11px] font-medium border rounded-full text-white bg-custom-500 border-custom-500">3</span></h5>
+        </div>
+
+     
+       
+
+        <div class="shrink-0">
+            <button data-drawer-close="cartSidePenal" class="transition-all duration-150 ease-linear text-slate-500 hover:text-slate-800"><i data-lucide="x" class="size-4"></i></button>
+        </div>
+    </div>
+    <div class="px-4 py-3 text-sm text-green-500 border border-transparent bg-green-50 dark:bg-green-400/20">
+        <span class="font-bold underline">starcode50</span> Coupon code applied successfully.
+    </div>
+    <div>
+        <div class="h-[calc(100vh_-_370px)] p-4 overflow-y-auto product-list">
+            <div class="flex flex-col gap-4">
+                <div class="flex gap-2 product">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-md bg-slate-100 shrink-0 dark:bg-zink-500">
+                        <img src="assets/images/img-012.png" alt="" class="h-8">
+                    </div>
+                    <div class="overflow-hidden grow">
+                        <div class="ltr:float-right rtl:float-left">
+                            <button class="transition-all duration-150 ease-linear text-slate-500 dark:text-zink-200 hover:text-red-500 dark:hover:text-red-500"><i data-lucide="x" class="size-4"></i></button>
+                        </div>
+                        <a href="#!" class="transition-all duration-200 ease-linear hover:text-custom-500">
+                            <h6 class="mb-1 text-15">Cotton collar t-shirts for men</h6>
+                        </a>
+                        <div class="flex items-center mb-3">
+                            <h5 class="text-base product-price"> $<span>155.32</span></h5>
+                            <div class="font-normal rtl:mr-1 ltr:ml-1 text-slate-500 dark:text-zink-200">(Fashion)</div>
+                        </div>
+                        <div class="flex items-center justify-between gap-3">
+                            <div class="inline-flex text-center input-step">
+                                <button type="button" class="border w-9 h-9 leading-[15px] minus bg-white dark:bg-zink-700 dark:border-zink-500 ltr:rounded-l rtl:rounded-r transition-all duration-200 ease-linear border-slate-200 text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50"><i data-lucide="minus" class="inline-block size-4"></i></button>
+                                <input type="number" class="w-12 text-center h-9 border-y product-quantity dark:bg-zink-700 focus:shadow-none dark:border-zink-500" value="2" min="0" max="100" readonly="">
+                                <button type="button" class="transition-all duration-200 ease-linear bg-white border dark:bg-zink-700 dark:border-zink-500 ltr:rounded-r rtl:rounded-l w-9 h-9 border-slate-200 plus text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50"><i data-lucide="plus" class="inline-block size-4"></i></button>
+                            </div>
+                            <h6 class="product-line-price">310.64</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2 product">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-md bg-slate-100 shrink-0 dark:bg-zink-500">
+                        <img src="assets/images/img-03.png" alt="" class="h-8">
+                    </div>
+                    <div class="overflow-hidden grow">
+                        <div class="ltr:float-right rtl:float-left">
+                            <button class="transition-all duration-150 ease-linear text-slate-500 dark:text-zink-200 hover:text-red-500 dark:hover:text-red-500"><i data-lucide="x" class="size-4"></i></button>
+                        </div>
+                        <a href="#!" class="transition-all duration-200 ease-linear hover:text-custom-500">
+                            <h6 class="mb-1 text-15">Like style travel black handbag</h6>
+                        </a>
+                        <div class="flex items-center mb-3">
+                            <h5 class="text-base product-price"> $<span>349.95</span></h5>
+                            <div class="font-normal rtl:mr-1 ltr:ml-1 text-slate-400 dark:text-zink-200">(Luggage)</div>
+                        </div>
+                        <div class="flex items-center justify-between gap-3">
+                            <div class="inline-flex text-center input-step">
+                                <button type="button" class="border w-9 h-9 leading-[15px] minus bg-white dark:bg-zink-700 dark:border-zink-500 ltr:rounded-l rtl:rounded-r transition-all duration-200 ease-linear border-slate-200 text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50"><i data-lucide="minus" class="inline-block size-4"></i></button>
+                                <input type="number" class="w-12 text-center h-9 border-y product-quantity dark:bg-zink-700 focus:shadow-none dark:border-zink-500" value="1" min="0" max="100" readonly="">
+                                <button type="button" class="transition-all duration-200 ease-linear bg-white border dark:bg-zink-700 dark:border-zink-500 ltr:rounded-r rtl:rounded-l w-9 h-9 border-slate-200 plus text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50"><i data-lucide="plus" class="inline-block size-4"></i></button>
+                            </div>
+                            <h6 class="product-line-price">349.95</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2 product">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-md bg-slate-100 shrink-0 dark:bg-zink-500">
+                        <img src="assets/images/img-09.png" alt="" class="h-8">
+                    </div>
+                    <div class="overflow-hidden grow">
+                        <div class="ltr:float-right rtl:float-left">
+                            <button class="transition-all duration-150 ease-linear text-slate-500 dark:text-zink-200 hover:text-red-500 dark:hover:text-red-500"><i data-lucide="x" class="size-4"></i></button>
+                        </div>
+                        <a href="#!" class="transition-all duration-200 ease-linear hover:text-custom-500">
+                            <h6 class="mb-1 text-15">Blive Printed Men Round Neck</h6>
+                        </a>
+                        <div class="flex items-center mb-3">
+                            <h5 class="text-base product-price">$<span>546.74</span></h5>
+                            <div class="font-normal rtl:mr-1 ltr:ml-1 text-slate-400 dark:text-zink-200">(Fashion)</div>
+                        </div>
+                        <div class="flex items-center justify-between gap-3">
+                            <div class="inline-flex text-center input-step">
+                                <button type="button" class="border w-9 h-9 leading-[15px] minus bg-white dark:bg-zink-700 dark:border-zink-500 ltr:rounded-l rtl:rounded-r transition-all duration-200 ease-linear border-slate-200 text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50"><i data-lucide="minus" class="inline-block size-4"></i></button>
+                                <input type="number" class="w-12 text-center h-9 border-y product-quantity dark:bg-zink-700 focus:shadow-none dark:border-zink-500" value="4" min="0" max="100" readonly="">
+                                <button type="button" class="transition-all duration-200 ease-linear bg-white border dark:bg-zink-700 dark:border-zink-500 ltr:rounded-r rtl:rounded-l w-9 h-9 border-slate-200 plus text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50"><i data-lucide="plus" class="inline-block size-4"></i></button>
+                            </div>
+                            <h6 class="product-line-price end">2,186.96</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-slate-200 dark:border-zink-500">
+
+        
+            <div class="flex items-center justify-between gap-3">
+                <a href="apps-ecommerce-product-grid.html" class="w-full text-white btn bg-slate-500 border-slate-500 hover:text-white hover:bg-slate-600 hover:border-slate-600 focus:text-white focus:bg-slate-600 focus:border-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:border-slate-600 active:ring active:ring-slate-100 dark:ring-slate-400/10">Continue Shopping</a>
+                <a href="apps-ecommerce-checkout.html" class="w-full text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20">Checkout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm">
+
+    <div class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
+        <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
+
+            <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
+
+                <div class="grow">
+                    <h5 class="text-16">เพิ่มรายการสินค้า</h5>
+                </div>
+
+                
+       
+              
+       
+
+
+                <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
+                    <li class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
+                        <a href="#!" class="text-slate-400 dark:text-zink-200">เปิดรายการสินค้า</a>
+                    </li>
+                    <li class="text-slate-700 dark:text-zink-100">
+                        เพิ่มรายการสินค้า
+                    </li>
+                </ul>
+            </div>
+
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-x-5">
+                <div class="xl:col-span-9 products-list">
+
+
+
+
+                 
+                  
+                    <button data-modal-target="extraLargeModal" type="button" class="text-white transition-all duration-200 ease-linear btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:focus:ring-custom-400/20">เพิ่มรายการสินค้า</button>
+                    <div id="extraLargeModal" modal-center="" class="fixed flex flex-col hidden transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
+                        <div class="w-screen lg:w-[55rem] bg-white shadow rounded-md dark:bg-zink-600 flex flex-col h-full">
+                            <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
+                            
+
+                                <div class="card-body">
+                                   
+
+                                  
+                                    <div class="flex justify-end gap-6 mt-20">
+                                        <button data-modal-close="extraLargeModal" class="ml-auto mr-4 transition-all duration-200 ease-linear text-slate-500 hover:text-red-500 dark:text-zink-200 dark:hover:text-red-500">
+                                            <i data-lucide="x" class="size-5"></i>
+                                        </button>
+                                    </div>
+                                    
+                                 
+                                    <div class="flex flex-wrap items-center gap-6 mt-4  ">
+
+
+                                        
+                                        <form id="searchForm" method="GET" action="{% url 'apps_ecommerceCart' %}" class="mb-4 flex flex-wrap gap-2">
+                                            <select id="categorySelect" name="category" class="ltr:pl-8 rtl:pr-8 search form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 form-input">
+                                                <option value="">-- ทุกหมวดหมู่ --</option>
+                                                {% for category in categories %}
+                                                    <option value="{{ category.id }}" {% if request.GET.category == category.id|stringformat:"s" %}selected{% endif %}>
+                                                        {{ category.name }}
+                                                    </option>
+                                                {% endfor %}
+                                            </select>
+                                        
+                                            <!--<input type="number" name="min_price" placeholder="ราคาต่ำสุด" class="form-input" value="{{ request.GET.min_price }}">
+                                            <input type="number" name="max_price" placeholder="ราคาสูงสุด" class="form-input" value="{{ request.GET.max_price }}"> -->
+                                        
+                                            <select name="sort" class="ltr:pl-8 rtl:pr-8 search form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 form-input">
+                                                <option value="default" {% if request.GET.sort == "default" %}selected{% endif %}>-- เรียงลำดับ --</option>
+                                                <option value="highest" {% if request.GET.sort == "highest" %}selected{% endif %}>ราคาสูงไปต่ำ</option>
+                                                <option value="lowest" {% if request.GET.sort == "lowest" %}selected{% endif %}>ราคาต่ำไปสูง</option>
+                                                <option value="newest" {% if request.GET.sort == "newest" %}selected{% endif %}>สินค้ามาใหม่</option>
+                                            </select>
+                                        
+                                            <input type="text" id="searchBarcode" name="search" placeholder="Search for ID or Barcode" class="py-2 pr-4 text-sm text-topbar-item bg-topbar border border-topbar-border rounded pl-8 placeholder:text-slate-400 form-control focus-visible:outline-0 min-w-[300px] focus:border-blue-400 group-data-[topbar=dark]:bg-topbar-dark group-data-[topbar=dark]:border-topbar-border-dark group-data-[topbar=dark]:placeholder:text-slate-500 group-data-[topbar=dark]:text-topbar-item-dark group-data-[topbar=brand]:bg-topbar-brand group-data-[topbar=brand]:border-topbar-border-brand group-data-[topbar=brand]:placeholder:text-blue-300 group-data-[topbar=brand]:text-topbar-item-brand group-data-[topbar=dark]:dark:bg-zink-700 group-data-[topbar=dark]:dark:border-zink-500 group-data-[topbar=dark]:dark:text-zink-100 form-input" value="{{ request.GET.search }}">
+                                        
+                                            <button type="submit" class="text-white btn bg-custom-500 border-custom-500 hover:bg-custom-600">ค้นหา</button>
+                                        
+                                            <a href="javascript:void(0);" id="clearFilterButton" class="text-white btn bg-custom-500 border-custom-500 hover:bg-custom-600">เคลียร์</a>
+                                        </form>
+                    
+        
+                                    </div>
+
+
+
+
+                                    
+                                </div>
+
+
+                            
+                               
+
+                               
+                                
+
+                            </div>
+
+                            
+
+
+                            <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
+                                <h5 class="mb-3 text-16">รายการสินค้าที่เลือก</h5>
+                               
+                           
+                                     <!-- Grid ครอบสินค้าทั้งหมด -->
+                                <div id="productList1" class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-3">
+
+                                    
+
+                                      <!-- ค่ามันต้องแสดงอยู่ตรงนี้ -->
+                                    
+    
+       
+                                     
+
+                                  
+                                </div><!--end grid-->
+
+
+
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+                
+
+
+                    <div class="flex items-center gap-3 mb-5">
+                        <h5 class="underline text-16 grow">
+                            รายการสินค้าที่เลือก (<span id="item-count">0</span>)
+                          </h5>
+
+
+
+
+                       <!-- <div>
+                            <a href="#!" class="text-red-500 transition-all duration-300 ease-linear hover:text-red-600"><i data-lucide="trash-2" class="inline-block mr-1 align-middle size-4"></i> <span class="align-middle">ลบรายการทั้งหมด</span></a>
+                        </div>
+                        -->
+
+                    </div>
+
+
+                
+
+                    <div id="cart-items">
+
+
+                    <!--*****************************************************ในส่วนของการเพิ่มสินค้าตรงนี้********************************-->
+
+                    </div>
+
+                   
+
+
+
+
+
+                </div><!--end col-->
+
+
+
+
+                
+
+                <div class="xl:col-span-3">
+
+
+
+
+                    <div class="flex gap-2 mt-5 shrink-0">
+
+
+
+
+                                    <button data-modal-target="largeModal" type="button" class="w-full text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-red-400/20">ทำการจ่าย</button>
+                        <div id="largeModal" modal-center class="fixed inset-0 z-drawer hidden flex items-center justify-center bg-black bg-opacity-50">
+                                
+                            <div class="w-screen md:w-[40rem] bg-white dark:bg-zinc-800 shadow rounded-xl flex flex-col h-full">
+
+                        
+                                
+
+
+
+
+                                <div class="p-4 space-y-6">
+
+                                    <!-- Header -->
+                                    <div class="flex justify-between items-center">
+                                      <h2 class="text-xl font-bold text-slate-700 dark:text-white">ระบบรับเงิน (POS)</h2>
+                                      <button class="text-red-500 hover:text-red-700 font-semibold" data-modal-close="largeModal">✕ ปิด</button>
+                                    </div>
+                                  
+                                    <!-- ส่วนป้อนจำนวนเงินผ่าน Keypad -->
+                                    <div class="grid grid-cols-4 gap-2">
+                                      <input id="posInput" type="text" class="col-span-4 text-3xl text-right p-3 rounded-lg bg-white dark:bg-zinc-800 border border-slate-300 dark:border-zinc-600 focus:outline-none" placeholder="0.00" readonly>
+                                  
+             
+
+      <button type="button" id="keypad-1" class="text-xl text-orange-500 bg-orange-100 btn hover:text-white hover:bg-orange-600 focus:text-white focus:bg-orange-600 focus:ring focus:ring-orange-100 active:text-white active:bg-orange-600 active:ring active:ring-orange-100 dark:bg-orange-500/20 dark:text-orange-500 dark:hover:bg-orange-500 dark:hover:text-white dark:focus:bg-orange-500 dark:focus:text-white dark:active:bg-orange-500 dark:active:text-white dark:ring-orange-400/20">1</button>
+      <button type="button" id="keypad-2" class="text-xl text-orange-500 bg-orange-100 btn hover:text-white hover:bg-orange-600 focus:text-white focus:bg-orange-600 focus:ring focus:ring-orange-100 active:text-white active:bg-orange-600 active:ring active:ring-orange-100 dark:bg-orange-500/20 dark:text-orange-500 dark:hover:bg-orange-500 dark:hover:text-white dark:focus:bg-orange-500 dark:focus:text-white dark:active:bg-orange-500 dark:active:text-white dark:ring-orange-400/20">2</button>
+      <button type="button" id="keypad-3" class="text-xl text-orange-500 bg-orange-100 btn hover:text-white hover:bg-orange-600 focus:text-white focus:bg-orange-600 focus:ring focus:ring-orange-100 active:text-white active:bg-orange-600 active:ring active:ring-orange-100 dark:bg-orange-500/20 dark:text-orange-500 dark:hover:bg-orange-500 dark:hover:text-white dark:focus:bg-orange-500 dark:focus:text-white dark:active:bg-orange-500 dark:active:text-white dark:ring-orange-400/20">3</button>
+      <button type="button" id="keypad-c" class="text-xl text-red-500 bg-red-100 btn hover:text-white hover:bg-red-600 focus:text-white focus:bg-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:ring active:ring-red-100 dark:bg-red-500/20 dark:text-red-500 dark:hover:bg-red-500 dark:hover:text-white dark:focus:bg-red-500 dark:focus:text-white dark:active:bg-red-500 dark:active:text-white dark:ring-red-400/20">C</button>
+      <button type="button" id="keypad-4" class="text-xl text-orange-500 bg-orange-100 btn hover:text-white hover:bg-orange-600 focus:text-white focus:bg-orange-600 focus:ring focus:ring-orange-100 active:text-white active:bg-orange-600 active:ring active:ring-orange-100 dark:bg-orange-500/20 dark:text-orange-500 dark:hover:bg-orange-500 dark:hover:text-white dark:focus:bg-orange-500 dark:focus:text-white dark:active:bg-orange-500 dark:active:text-white dark:ring-orange-400/20">4</button>
+      <button type="button" id="keypad-5" class="text-xl text-orange-500 bg-orange-100 btn hover:text-white hover:bg-orange-600 focus:text-white focus:bg-orange-600 focus:ring focus:ring-orange-100 active:text-white active:bg-orange-600 active:ring active:ring-orange-100 dark:bg-orange-500/20 dark:text-orange-500 dark:hover:bg-orange-500 dark:hover:text-white dark:focus:bg-orange-500 dark:focus:text-white dark:active:bg-orange-500 dark:active:text-white dark:ring-orange-400/20">5</button>
+      <button type="button" id="keypad-6" class="text-xl text-orange-500 bg-orange-100 btn hover:text-white hover:bg-orange-600 focus:text-white focus:bg-orange-600 focus:ring focus:ring-orange-100 active:text-white active:bg-orange-600 active:ring active:ring-orange-100 dark:bg-orange-500/20 dark:text-orange-500 dark:hover:bg-orange-500 dark:hover:text-white dark:focus:bg-orange-500 dark:focus:text-white dark:active:bg-orange-500 dark:active:text-white dark:ring-orange-400/20">6</button>
+      <button type="button" id="keypad-point" class="text-xl text-sky-500 btn bg-sky-100 hover:text-white hover:bg-sky-600 focus:text-white focus:bg-sky-600 focus:ring focus:ring-sky-100 active:text-white active:bg-sky-600 active:ring active:ring-sky-100 dark:bg-sky-500/20 dark:text-sky-400 dark:hover:bg-sky-500 dark:hover:text-white dark:focus:bg-sky-500 dark:focus:text-white dark:active:bg-sky-500 dark:active:text-white dark:ring-sky-400/20">.</button>
+      <button type="button" id="keypad-7" class="text-xl text-orange-500 bg-orange-100 btn hover:text-white hover:bg-orange-600 focus:text-white focus:bg-orange-600 focus:ring focus:ring-orange-100 active:text-white active:bg-orange-600 active:ring active:ring-orange-100 dark:bg-orange-500/20 dark:text-orange-500 dark:hover:bg-orange-500 dark:hover:text-white dark:focus:bg-orange-500 dark:focus:text-white dark:active:bg-orange-500 dark:active:text-white dark:ring-orange-400/20">7</button>
+      <button type="button" id="keypad-8" class="text-xl text-orange-500 bg-orange-100 btn hover:text-white hover:bg-orange-600 focus:text-white focus:bg-orange-600 focus:ring focus:ring-orange-100 active:text-white active:bg-orange-600 active:ring active:ring-orange-100 dark:bg-orange-500/20 dark:text-orange-500 dark:hover:bg-orange-500 dark:hover:text-white dark:focus:bg-orange-500 dark:focus:text-white dark:active:bg-orange-500 dark:active:text-white dark:ring-orange-400/20">8</button>
+      <button type="button" id="keypad-9" class="text-xl text-orange-500 bg-orange-100 btn hover:text-white hover:bg-orange-600 focus:text-white focus:bg-orange-600 focus:ring focus:ring-orange-100 active:text-white active:bg-orange-600 active:ring active:ring-orange-100 dark:bg-orange-500/20 dark:text-orange-500 dark:hover:bg-orange-500 dark:hover:text-white dark:focus:bg-orange-500 dark:focus:text-white dark:active:bg-orange-500 dark:active:text-white dark:ring-orange-400/20">9</button>
+      <button type="button" id="keypad-0" class="text-xl text-orange-500 bg-orange-100 btn hover:text-white hover:bg-orange-600 focus:text-white focus:bg-orange-600 focus:ring focus:ring-orange-100 active:text-white active:bg-orange-600 active:ring active:ring-orange-100 dark:bg-orange-500/20 dark:text-orange-500 dark:hover:bg-orange-500 dark:hover:text-white dark:focus:bg-orange-500 dark:focus:text-white dark:active:bg-orange-500 dark:active:text-white dark:ring-orange-400/20">0</button>
+      
+      
+      
+      
+      
+      
+                                    </div>
+                                  
+                                    <!-- ปุ่มแบงค์ลัด -->
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+                                        <button id="Shortcut20" class="p-3 rounded-lg bg-custom-500 hover:bg-custom-600 text-white font-semibold quick-bill transition-all transform hover:scale-105 focus:outline-none shadow-lg" data-value="20">
+                                          <span class="mr-2">+ ฿20</span>
+                                          <i class="fas fa-money-bill-wave-alt"></i>
+                                        </button>
+                                        <button id="Shortcut50" class="p-3 rounded-lg bg-custom-500 hover:bg-custom-600 text-white font-semibold quick-bill transition-all transform hover:scale-105 focus:outline-none shadow-lg" data-value="50">
+                                          <span class="mr-2">+ ฿50</span>
+                                          <i class="fas fa-money-bill-wave-alt"></i>
+                                        </button>
+                                        <button id="Shortcut100" class="p-3 rounded-lg bg-custom-500 hover:bg-custom-600 text-white font-semibold quick-bill transition-all transform hover:scale-105 focus:outline-none shadow-lg" data-value="100">
+                                          <span class="mr-2">+ ฿100</span>
+                                          <i class="fas fa-money-bill-wave-alt"></i>
+                                        </button>
+                                        <button id="Shortcut1000" class="p-3 rounded-lg bg-custom-500 hover:bg-custom-600 text-white font-semibold quick-bill transition-all transform hover:scale-105 focus:outline-none shadow-lg" data-value="1000">
+                                          <span class="mr-2">+ ฿1000</span>
+                                          <i class="fas fa-money-bill-wave-alt"></i>
+                                        </button>
+                                      </div>
+                                      
+                                      
+                                      
+                                  
+                                    <!-- แสดงยอดถอน & รับเงิน -->
+                                    <div class="space-y-2">
+                                      <div class="flex justify-between">
+                                        <span class="text-slate-600 dark:text-zinc-300">ยอดที่ต้องจ่าย:</span>
+                                        <span class="font-bold text-lg text-red-600 dark:text-red-400" id="totalDisplay">฿0.00</span>
+                                      </div>
+                                      <div class="flex justify-between">
+                                        <span class="text-slate-600 dark:text-zinc-300">รับเงินมา:</span>
+                                        <span class="font-bold text-lg text-green-600 dark:text-green-400" id="received">฿0.00</span>
+                                      </div>
+                                      <div class="flex justify-between border-t pt-2">
+                                        <span class="text-slate-600 dark:text-zinc-300">เงินทอน:</span>
+                                        <span class="font-bold text-lg text-blue-600 dark:text-blue-400" id="change">฿0.00</span>
+                                      </div>
+                                    </div>
+                                  
+                                    <!-- ปุ่มด้านล่าง -->
+                                    <div class="flex justify-between gap-4 pt-4 border-t mt-4">
+                                      <button id="RecipeMony" class="btn w-full text-white bg-purple-500 hover:bg-purple-500" >รับเงิน</button>
+                                      <button class="btn w-full text-white bg-sky-500 hover:bg-sky-500" data-modal-close="largeModal">พิมพ์ใบเสร็จ</button>
+                                      
+                                    </div>
+                                  </div>
+                                  
+
+
+
+
+
+
+
+                                  
+                            </div>
+
+
+                        </div>
+                      
+
+
+                        <a href="apps-ecommerce-checkout.html" class="w-full text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">พิมพ์ใบกำกับภาษี</a>
+                    </div>
+
+
+                    <div class="sticky top-[calc(theme('spacing.header')_*_1.3)] mb-5">
+                        <div class="card ">
+                            <div class="card-body">
+                                <h6 class="mb-4 text-15">สินค้าที่เลือกทั้งหมด</h6>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full">
+                                        <tbody class="table-total">
+                                          <!-- ✅ รายการสินค้าใหม่จะถูกแทรกก่อนบรรทัดนี้ -->
+                                          <tr class="cart-summary-row">
+                                            <td colspan="2">
+                                              <hr class="my-2 border-slate-300">
+                                            </td>
+                                          </tr>
+                              
+                                          <!-- ✅ บรรทัดแสดงราคารวม -->
+                                          <tr class="font-semibold">
+                                            <td class="pt-2">รวมทั้งหมด (บาท)</td>
+                                            <td class="pt-2 cart-total">0.00 บาท</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        
+                        
+    
+
+
+
+                    </div>
+                </div><!--end col-->
+
+
+
+
+            </div><!--end row-->
+
+        </div>
+        <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+    <footer class="ltr:md:left-vertical-menu rtl:md:right-vertical-menu group-data-[sidebar-size=md]:ltr:md:left-vertical-menu-md group-data-[sidebar-size=md]:rtl:md:right-vertical-menu-md group-data-[sidebar-size=sm]:ltr:md:left-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:md:right-vertical-menu-sm absolute right-0 bottom-0 px-4 h-14 group-data-[layout=horizontal]:ltr:left-0  group-data-[layout=horizontal]:rtl:right-0 left-0 border-t py-3 flex items-center dark:border-zink-600">
+        <div class="group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl w-full">
+            <div class="grid items-center grid-cols-1 text-center lg:grid-cols-2 text-slate-400 dark:text-zink-200 ltr:lg:text-left rtl:lg:text-right">
+                <div>
+                    <script>document.write(new Date().getFullYear())</script> somsak sonngai
+                </div>
+                <div class="hidden lg:block">
+                    <div class="ltr:text-right rtl:text-left">
+                        Design & Develop Somsak Sonngai
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>        
+</div>
+
+{% endblock%}

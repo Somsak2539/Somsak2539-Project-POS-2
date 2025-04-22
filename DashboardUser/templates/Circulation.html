@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load humanize %}
+{% load static %}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>รายงานยอดขาย</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="date"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>รายงานยอดขาย</h2>
+
+    <!-- ✅ ส่วนแสดงแจ้งเตือน -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    
+
+    <!-- ฟอร์มกรองช่วงวันที่ -->
+    <form method="GET" action="{% url 'Circulation1' %}">
+        <label for="start_date">วันที่เริ่มต้น:</label>
+        <input type="date" id="start_date" name="start_date" value="{{ start_date|date:'Y-m-d' }}">
+
+        <label for="end_date">วันที่สิ้นสุด:</label>
+        <input type="date" id="end_date" name="end_date" value="{{ end_date|date:'Y-m-d' }}">
+        <button type="submit" class="text-red-500 bg-red-100 btn hover:text-white hover:bg-red-600 focus:text-white focus:bg-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:ring active:ring-red-100 dark:bg-red-500/20 dark:text-red-500 dark:hover:bg-red-500 dark:hover:text-white dark:focus:bg-red-500 dark:focus:text-white dark:active:bg-red-500 dark:active:text-white dark:ring-red-400/20">Red</button>
+        <button type="submit">กรอง</button>
+    </form>
+
+    <!-- แสดงยอดขายรวมของช่วงที่เลือก -->
+    <h3>ยอดขายรวม: {{ total_sum|floatformat:2|intcomma }} บาท</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>วันที่/เวลา</th>
+                <th>ยอดขายรวม (บาท)</th>
+                <th>สินค้า</th>
+                <th>จำนวน</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+                {% for item in record.stock_adjustments %}
+                <tr>
+                    {% if forloop.first %}
+                        <td rowspan="{{ record.stock_adjustments|length }}">{{ record.timestamp|date:"d/m/Y H:i:s" }}</td>
+                        <td rowspan="{{ record.stock_adjustments|length }}">{{ record.total_amount|intcomma }} บาท</td>
+                    {% endif %}
+                    <td>{{ item.product }}</td>
+                    <td>{{ item.quantity }}</td>
+                </tr>
+                {% endfor %}
+            {% empty %}
+                <tr>
+                    <td colspan="4" style="text-align: center;">ไม่มีข้อมูลการขาย</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        function formatDateInput(dateInputId) {
+            const input = document.getElementById(dateInputId);
+            if (input) {
+                input.addEventListener('change', function () {
+                    const date = new Date(this.value);
+                    if (!isNaN(date)) {
+                        const day = String(date.getDate()).padStart(2, '0');
+                        const month = String(date.getMonth() + 1).padStart(2, '0');
+                        const year = date.getFullYear();
+                        this.value = `${year}-${month}-${day}`; // เปลี่ยนเป็น YYYY-MM-DD เพื่อให้ Django ใช้ได้
+                    }
+                });
+            }
+        }
+
+        formatDateInput('start_date');
+        formatDateInput('end_date');
+    </script>
+
+</body>

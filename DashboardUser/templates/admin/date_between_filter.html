@@ -1,0 +1,12 @@
+{% load i18n %}
+<div style="margin-bottom: 1rem;">
+    <label for="from_date">ตั้งแต่วันที่:</label>
+    <input type="date" name="from_date" value="{{ request.GET.from_date|default:'' }}" />
+</div>
+<div>
+    <label for="to_date">ถึงวันที่:</label>
+    <input type="date" name="to_date" value="{{ request.GET.to_date|default:'' }}" />
+</div>
+<div style="margin-top: 5px;">
+    <button type="submit" class="button">ค้นหา</button>
+</div>

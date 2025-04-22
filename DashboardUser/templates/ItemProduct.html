@@ -1,0 +1,166 @@
+{% extends "LayoutDashbords.html"%}
+{% load humanize %}
+
+{% load static %}
+
+
+
+
+
+
+{% block title%}
+   การเพิ่มสินค้าลงในรายการ และแสดงรายการคงเหลือ
+{% endblock %}
+
+
+
+
+
+
+
+
+{% block content%}
+
+<div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm">
+
+    <div class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
+        <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
+
+            <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
+                <div class="grow">
+                    <h5 class="text-16">รายงานยอดขาย</h5>
+                </div>
+                <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
+                    <li class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
+                        <a href="#!" class="text-slate-400 dark:text-zink-200">Dashboards</a>
+                    </li>
+                    <li class="text-slate-700 dark:text-zink-100">
+                        รายงานยอดขาย
+                    </li>
+                </ul>
+
+
+
+            </div>
+
+
+            <!-- ฟอร์มกรองช่วงวันที่ -->
+            <form method="GET" action="{% url 'ItemProduct' %}">
+               
+                   <label for="start_date">วันที่เริ่มต้น:</label>
+                    <input type="date" id="start_date" name="start_date" value="{{ start_date|date:'Y-m-d' }}">
+
+                        <label for="end_date">วันที่สิ้นสุด:</label>
+                        <input type="date" id="end_date" name="end_date" value="{{ end_date|date:'Y-m-d' }}">
+                   <button type="submit" class="text-red-500 bg-red-100 btn hover:text-white hover:bg-red-600 focus:text-white focus:bg-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:ring active:ring-red-100 dark:bg-red-500/20 dark:text-red-500 dark:hover:bg-red-500 dark:hover:text-white dark:focus:bg-red-500 dark:focus:text-white dark:active:bg-red-500 dark:active:text-white dark:ring-red-400/20">ค้นหา</button>
+                   
+           </form>
+        
+           {% if start_date and end_date %}
+           <p class="mt-4 text-2xl text-green-600 font-bold">
+               📅 ช่วงวันที่ที่เลือก: {{ start_date }} - {{ end_date }}
+           </p>
+       {% else %}
+           <p class="mt-4 text-xl text-gray-500 font-semibold">
+               🔍 โปรดเลือกช่วงวันที่เพื่อดูข้อมูล
+           </p>
+       {% endif %}
+       
+    
+               
+               
+               
+                <div class="order-11 col-span-12 2xl:order-1 card 2xl:col-span- 12">
+                    <div class="card-body">
+                        <div class="grid items-center grid-cols-1 gap-3 mb-5 xl:grid-cols-12">
+                            <div class="xl:col-span-3">
+                                
+                                <h1 class="text-15">รายงานยอดขาย</h1>
+                                <h4>ยอดขายรวม: {{ total_sum|floatformat:2|intcomma }} บาท</h4>
+                               
+
+                            </div><!--end col-->
+
+
+                            <div class="xl:col-span-3">
+                                
+                                <h1 class="text-15">รายงานผลกำไร</h1>
+                           
+                                <h4>กำไรรวมทั้งหมด: {{ total_profit_sum|floatformat:2|intcomma }} บาท</h4>
+
+                            </div><!--end col-->
+
+
+                            
+                        </div><!--end grid-->
+                
+                        <div class="-mx-5 overflow-x-auto">
+
+
+                            <table class="unique-table">
+                                <thead>
+                                    <tr> 
+                                        <th class="unique-th">วันที่/เวลา</th>
+                                        <th class="unique-th">ยอดขายรวม (บาท)</th>
+                                        <th class="unique-th">รับเงิน (บาท)</th>
+                                        <th class="unique-th">ทอนตัง (บาท)</th>
+                                        <th class="unique-th">ชื่อผู้ที่อยู่เครื่อง</th>
+                                        <th class="unique-th">สินค้า</th>
+                                        <th class="unique-th">จำนวน</th>
+                                        <th class="unique-th">กำไรต่อหน่วย</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for record in records %}
+                                        {% for item in record.stock_adjustments %}
+                                        <tr>
+                                            {% if forloop.first %}
+                                                <td class="unique-td" rowspan="{{ record.stock_adjustments|length }}">{{ record.timestamp|date:"d/m/Y H:i:s" }}</td>
+                                                <td class="unique-td" rowspan="{{ record.stock_adjustments|length }}">{{ record.total_amount|intcomma }} บาท</td>
+                                                <td class="unique-td" rowspan="{{ record.stock_adjustments|length }}">{{ record.entered_amount|intcomma }} บาท</td>
+                                                <td class="unique-td" rowspan="{{ record.stock_adjustments|length }}">{{ record.change|intcomma }} บาท</td>
+                                                <td class="unique-td" rowspan="{{ record.stock_adjustments|length }}">{{ record.cashier }}</td>
+                                            {% endif %}
+                                            <td class="unique-td">{{ item.product }}</td>
+                                            <td class="unique-td">{{ item.quantity|floatformat:2|intcomma }}</td>
+                                            <td class="unique-td">{{ item.totalProfit|floatformat:2|intcomma }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    {% empty %}
+                                        <tr>
+                                            <td class="unique-td" colspan="8" style="text-align: center;">ไม่มีข้อมูลการขาย</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                      
+                    </div>
+                </div><!--end col-->
+                
+                
+
+        </div>
+        <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+    <footer class="ltr:md:left-vertical-menu rtl:md:right-vertical-menu group-data-[sidebar-size=md]:ltr:md:left-vertical-menu-md group-data-[sidebar-size=md]:rtl:md:right-vertical-menu-md group-data-[sidebar-size=sm]:ltr:md:left-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:md:right-vertical-menu-sm absolute right-0 bottom-0 px-4 h-14 group-data-[layout=horizontal]:ltr:left-0  group-data-[layout=horizontal]:rtl:right-0 left-0 border-t py-3 flex items-center dark:border-zink-600">
+        <div class="group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl w-full">
+            <div class="grid items-center grid-cols-1 text-center lg:grid-cols-2 text-slate-400 dark:text-zink-200 ltr:lg:text-left rtl:lg:text-right">
+                <div>
+                    <script>document.write(new Date().getFullYear())</script> somsak sonngai
+                </div>
+                <div class="hidden lg:block">
+                    <div class="ltr:text-right rtl:text-left">
+                        Design & Develop by Somsak Sonngai
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>        
+</div>
+
+
+{% endblock%}

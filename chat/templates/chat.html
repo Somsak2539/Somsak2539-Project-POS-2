@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Private Chat Room</title>
+
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; padding: 20px; }
+        #chat-log { border: 1px solid #ccc; height: 300px; overflow-y: auto; padding: 10px; background: #f9f9f9; margin-bottom: 10px; }
+        #chat-message-input { width: 80%; padding: 10px; }
+        #chat-message-submit, #chat-file-submit { padding: 10px 20px; background: #28a745; color: white; border: none; cursor: pointer; }
+        .chat-message { display: flex; margin-bottom: 10px; max-width: 80%; word-wrap: break-word; }
+        .chat-bubble { padding: 10px; border-radius: 15px; max-width: 70%; word-wrap: break-word; }
+
+        /* ✅ แยกข้อความของเราและของคนอื่น */
+        .self { justify-content: flex-end; }
+        .other { justify-content: flex-start; }
+        .self .chat-bubble { background: #dcf8c6; align-self: flex-end; } /* สีเขียวอ่อน (LINE) */
+        .other .chat-bubble { background: #ffffff; border: 1px solid #ccc; align-self: flex-start; } /* สีขาว */
+    </style>
+</head>
+<body>
+
+
+    
+    <h2>Private Chat Room</h2>
+    <p><strong>Room Name:</strong> <span id="room-name">{{ room_name }}</span></p>
+    <p><strong>Username:</strong> <span id="username">{{ request.user.username }}</span></p>
+
+    <div id="chat-log"></div>
+
+    <input id="chat-message-input" type="text" placeholder="พิมพ์ข้อความของคุณที่นี่...">
+    <button id="chat-message-submit">ส่ง</button>
+
+    <input type="file" id="chat-file-input">
+    <button id="chat-file-submit">ส่งไฟล์</button>
+
+    <script>
+        const wsScheme = window.location.protocol === "https:" ? "wss" : "ws"; 
+        const chatSocket = new WebSocket(`${wsScheme}://${window.location.host}/ws/chat/{{ room_name }}/`);
+
+        chatSocket.onopen = function() {
+            console.log("✅ WebSocket Connected");
+        };
+
+        chatSocket.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            const chatLog = document.getElementById("chat-log");
+    
+            if (data.type === "chat_history") {
+                chatLog.innerHTML = "";  // ล้างข้อความเก่า
+                data.messages.forEach(msg => {
+                    displayMessage(msg);
+                });
+                scrollToBottom();  // ✅ เลื่อนลงหลังจากโหลดแชทเสร็จ
+            } else {
+                displayMessage(data);
+                scrollToBottom();  // ✅ เลื่อนลงเมื่อมีข้อความใหม่
+            }
+        };
+
+
+
+
+
+        // ✅ ฟังก์ชันแสดงข้อความ
+        function displayMessage(data) {
+            const chatLog = document.getElementById("chat-log");
+            const messageElement = document.createElement("div");
+            const bubbleElement = document.createElement("div");
+            
+            messageElement.classList.add("chat-message");
+            bubbleElement.classList.add("chat-bubble");
+
+            if (data.sender === "{{ request.user.username }}") {
+                messageElement.classList.add("self");
+                bubbleElement.classList.add("self");
+            } else {
+                messageElement.classList.add("other");
+                bubbleElement.classList.add("other");
+            }
+
+            if (data.message) {
+                bubbleElement.innerHTML = `<strong>${data.sender}</strong>: ${data.message} <br><small>${data.timestamp}</small>`;
+            } else if (data.file) {
+                bubbleElement.innerHTML = `<strong>${data.sender}</strong>: 📎 <a href="/media/chat_files/${data.file}" target="_blank">ดาวน์โหลดไฟล์</a> <br><small>${data.timestamp}</small>`;
+            }
+
+            messageElement.appendChild(bubbleElement);
+            chatLog.appendChild(messageElement);
+
+            // ✅ เลื่อนลงล่างสุดอัตโนมัติ
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        // ✅ ส่งข้อความ
+        document.getElementById("chat-message-submit").onclick = function() {
+            const messageInput = document.getElementById("chat-message-input");
+            const message = messageInput.value.trim();
+
+            if (message === "") {
+                alert("⚠️ กรุณาพิมพ์ข้อความก่อนส่ง!");
+                return;
+            }
+
+            chatSocket.send(JSON.stringify({ "message": message }));
+            messageInput.value = "";
+        };
+
+        document.getElementById("chat-message-input").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                document.getElementById("chat-message-submit").click();
+            }
+        });
+
+        // ✅ ส่งไฟล์
+        document.getElementById("chat-file-submit").onclick = function() {
+            const fileInput = document.getElementById("chat-file-input");
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert("⚠️ กรุณาเลือกไฟล์ก่อนส่ง!");
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const base64File = event.target.result.split(",")[1];
+                chatSocket.send(JSON.stringify({
+                    "file": base64File,
+                    "filename": file.name,
+                    "filetype": file.type
+                }));
+            };
+            reader.readAsDataURL(file);
+        };
+
+        // ✅ โหลดหน้าเสร็จให้เลื่อนลงล่างสุด
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById("chat-log").scrollTop = document.getElementById("chat-log").scrollHeight;
+            }, 200);
+        };
+    </script>
+
+</body>
+</html>

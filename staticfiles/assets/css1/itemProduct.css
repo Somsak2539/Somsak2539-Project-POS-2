@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+th, td {
+    padding: 10px;
+    border: 1px solid #b7c1cb;
+}
+th {
+    background-color: #042a05;
+    color: rgb(60, 210, 158);
+}
+tbody tr:nth-child(even) {
+    background-color: #189e59;
+}
+form {
+    margin-bottom: 20px;
+}
+input[type="date"] {
+    padding: 5px;
+    font-size: 16px;
+}

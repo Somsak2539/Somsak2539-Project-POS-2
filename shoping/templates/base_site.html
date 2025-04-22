@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %}
+
+{% block userlinks %}
+    <!-- แก้ไขลิงก์ VIEW SITE -->
+    <a href="{{ view_site_url }}" target="_blank">VIEW SITE</a> /
+    {% if user.has_usable_password %}
+        <a href="{% url 'admin:password_change' %}">CHANGE PASSWORD</a> /
+    {% endif %}
+    <a href="{% url 'admin:logout' %}">LOG OUT</a>
+{% endblock %}

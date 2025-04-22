@@ -1,0 +1,46 @@
+<form id="searchForm" method="GET" action="{% url 'apps_ecommerceCart' %}" class="mb-4 flex flex-wrap gap-2">
+                                      
+    <select id="categorySelect" name="category" class="ltr:pl-8 rtl:pr-8 search form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200">
+        <option value="">-- ทุกหมวดหมู่ --</option>
+        {% for category in categories %}
+            <option value="{{ category.id }}" {% if request.GET.category == category.id|stringformat:"s" %}selected{% endif %}>
+                {{ category.name }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <!-- ✅ ป้อนช่วงราคา (ค่าไม่หายหลัง Submit) -->
+<input type="number" name="min_price" placeholder="ราคาต่ำสุด"
+class="ltr:pl-8 rtl:pr-8 search form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+value="{{ request.GET.min_price }}">
+
+<input type="number" name="max_price" placeholder="ราคาสูงสุด"
+class="ltr:pl-8 rtl:pr-8 search form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+value="{{ request.GET.max_price }}">
+
+    <!-- ✅ ตัวเลือกเรียงลำดับ -->
+    <select id="searchForm" name="sort" class="ltr:pl-8 rtl:pr-8 search form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200">
+        <option value="default" {% if request.GET.sort == "default" %}selected{% endif %}>-- เรียงลำดับ --</option>
+        <option value="highest" {% if request.GET.sort == "highest" %}selected{% endif %}>ราคาสูงไปต่ำ</option>
+        <option value="lowest" {% if request.GET.sort == "lowest" %}selected{% endif %}>ราคาต่ำไปสูง</option>
+        <option value="newest" {% if request.GET.sort == "newest" %}selected{% endif %}>สินค้ามาใหม่</option>
+    </select>
+
+
+    <div class="relative  ltr:ml-3 rtl:mr-3 lg:block group-data-[layout=horizontal]:hidden group-data-[layout=horizontal]:lg:block">
+        <input type="text" class="py-2 pr-4 text-sm text-topbar-item bg-topbar border border-topbar-border rounded pl-8 placeholder:text-slate-400 form-control focus-visible:outline-0 min-w-[300px] focus:border-blue-400 group-data-[topbar=dark]:bg-topbar-dark group-data-[topbar=dark]:border-topbar-border-dark group-data-[topbar=dark]:placeholder:text-slate-500 group-data-[topbar=dark]:text-topbar-item-dark group-data-[topbar=brand]:bg-topbar-brand group-data-[topbar=brand]:border-topbar-border-brand group-data-[topbar=brand]:placeholder:text-blue-300 group-data-[topbar=brand]:text-topbar-item-brand group-data-[topbar=dark]:dark:bg-zink-700 group-data-[topbar=dark]:dark:border-zink-500 group-data-[topbar=dark]:dark:text-zink-100" placeholder="Search for ... ID Barcode name" autocomplete="off">
+        <i data-lucide="search" class="inline-block size-4 absolute left-2.5 top-2.5 text-topbar-item fill-slate-100 group-data-[topbar=dark]:fill-topbar-item-bg-hover-dark group-data-[topbar=dark]:text-topbar-item-dark group-data-[topbar=brand]:fill-topbar-item-bg-hover-brand group-data-[topbar=brand]:text-topbar-item-brand group-data-[topbar=dark]:dark:text-zink-200 group-data-[topbar=dark]:dark:fill-zink-600"></i>
+         <!-- ✅ ปุ่มค้นหา -->
+         <!-- ✅ ปุ่มค้นหา -->
+
+
+    <button type="submit" class="text-white btn bg-custom-500 border-custom-500 hover:bg-custom-600">ค้นหา</button>
+
+    <!-- ✅ ปุ่มเคลียร์ (Reset) -->
+    <a href="javascript:void(0);" id="clearFilterButton" class="text-white btn bg-custom-500 border-custom-500 hover:bg-custom-600">เคลียร์</a>
+
+
+    </div>
+   
+
+</form>

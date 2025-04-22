@@ -1,0 +1,51 @@
+.unique-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.unique-th, .unique-td {
+    padding: 10px;
+    border: 1px solid #060606;
+}
+
+.unique-th {
+    background-color: #ffffff; 
+    color: black;
+   
+}
+
+.unique-td {
+    background-color: #ffffff; 
+    color: black;
+}
+
+
+
+/*unique-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+.unique-th, .unique-td {
+    padding: 10px;
+    border: 1px solid #393838;
+}
+.unique-th {
+    background-color: #e7f2e8;
+    color: rgb(0, 0, 0);
+}
+tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+form {
+    margin-bottom: 20px;
+}
+input[type="date"] {
+    padding: 5px;
+    font-size: 16px;
+}*/

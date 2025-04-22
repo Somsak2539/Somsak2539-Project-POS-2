@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>พิมพ์ใบเสร็จ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+
+/* 🖨️ ตั้งค่าให้ใบเสร็จพิมพ์ออกมาในขนาด 80mm */
+@media print {
+    @page {
+        size: 80mm auto; /* ปรับขนาดใบเสร็จ */
+        margin: 0;
+    }
+
+    body {
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        text-align: center;
+        background: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .modal-content {
+        width: 80mm;
+        padding: 10px;
+        margin: 0 auto;
+        text-align: left;
+        border: none;
+    }
+
+    .receipt-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .receipt-table th, .receipt-table td {
+        padding: 5px;
+        border-bottom: 1px solid black;
+    }
+
+    .total {
+        font-weight: bold;
+        border-top: 2px solid black;
+    }
+
+    .thanks {
+        text-align: center;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .print-btn, .close {
+        display: none; /* ซ่อนปุ่มเมื่อพิมพ์ */
+    }
+}
+
+/* 🎨 สไตล์สำหรับ Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    width: 350px;
+}
+
+.receipt-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.receipt-table th, .receipt-table td {
+    padding: 6px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.total {
+    font-weight: bold;
+    background-color: #f8f8f8;
+}
+
+.print-btn {
+    margin-top: 15px;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.close {
+    color: red;
+    font-size: 24px;
+    float: right;
+    cursor: pointer;
+}
+
+
+
+
+</style>
+<body>
+
+
+    
+    <button class="print-btn" onclick="openModal()">🧾 ดูใบเสร็จ</button>
+    <!-- Modal Popup -->
+    <div id="receiptModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>🧾 ร้านค้าของคุณ</h2>
+            <p>เลขที่ใบเสร็จ: <strong>#123456</strong></p>
+            <p>วันที่: <span id="modal-date"></span></p>
+
+            <table class="receipt-table">
+                <thead>
+                    <tr>
+                        <th>สินค้า</th>
+                        <th class="price">จำนวน</th>
+                        <th class="price">ราคา</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>สินค้า A</td><td class="price">2</td><td class="price">100 บาท</td></tr>
+                    <tr><td>สินค้า B</td><td class="price">1</td><td class="price">50 บาท</td></tr>
+                    <tr><td>สินค้า C</td><td class="price">3</td><td class="price">30 บาท</td></tr>
+                </tbody>
+                <tfoot>
+                    <tr class="total">
+                        <td colspan="2">รวม</td>
+                        <td class="price">180 บาท</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <p class="thanks">🙏 ขอบคุณสำหรับใช้ผลิตการร้านเหมยน่ะ 🙏</p>
+            <button class="print-btn" onclick="printReceipt()">🖨️ พิมพ์ใบเสร็จ</button>
+        </div>
+    </div>
+
+
+    <script>
+        function openModal() {
+            document.getElementById("receiptModal").style.display = "flex";
+            document.getElementById("modal-date").innerText = new Date().toLocaleDateString();
+        }
+        
+        function closeModal() {
+            document.getElementById("receiptModal").style.display = "none";
+        }
+    
+        function printReceipt() {
+            let printContent = document.getElementById("receiptModal").innerHTML; // ✅ พิมพ์เฉพาะ Modal
+            let originalContent = document.body.innerHTML;
+    
+            document.body.innerHTML = printContent;
+            window.print();
+            document.body.innerHTML = originalContent;
+    
+            window.location.reload(); // ✅ รีโหลดหน้าเพื่อป้องกันเนื้อหาหายไป
+        }
+    </script>
+</body>
+</html>

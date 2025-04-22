@@ -1,0 +1,70 @@
+{% load static %}
+
+{% for Product1 in products %}
+<div x-data="{ open: false }">
+    <div class="space-y-1 rounded-md border border-white-light bg-white p-3 shadow-md dark:border-[#1B2E4B] dark:bg-black">
+        <!-- คลิกที่รูปเพื่อเปิด Pop-up -->
+        <div class="max-h-40 overflow-hidden rounded-md cursor-pointer" @click="open = true">
+            <img src="{{ Product1.image.url }}" alt="..." class="w-full object-cover">
+        </div>
+        <p class="text-xs dark:text-white"><span class="font-bold">{{ Product1.name }}</span></p>
+        <p class="text-xs dark:text-white"><span class="font-bold">ราคา</span> {{ Product1.price }} บาท</p>
+        <p class="text-xs dark:text-white"><span class="font-bold">Stock</span> {{ Product1.stock }}</p>
+        <p class="text-xs dark:text-white"><span class="font-bold">Barcode</span> : {{ Product1.barcode }}</p>
+    </div>
+
+    <!-- Pop-up ที่จะเปิดขึ้นเมื่อคลิกรูป -->
+    <div class="fixed inset-0 z-50 hidden bg-black/60 flex items-center justify-center" :class="open && '!block'">
+        <div class="bg-white p-5 rounded-lg shadow-lg w-full max-w-md">
+            <div class="flex justify-between">
+                <h5 class="text-lg font-bold">รายละเอียดสินค้า</h5>
+                <button @click="open = false" class="text-gray-500">✖</button>
+            </div>
+            <div class="mt-4">
+                <img src="{{ Product1.image.url }}" alt="..." class="w-full object-cover rounded-md">
+                <div>
+                    <h3 class="mt-3 text-sm"><span class="font-bold">{{ Product1.name }}</span></h3>
+                    <h3 class="text-sm"><span class="font-bold">ราคา</span> {{ Product1.price }} บาท</h3>
+                    <h3 class="text-sm"><span class="font-bold">Stock</span> {{ Product1.stock }}</h3>
+                    <h3 class="text-sm"><span class="font-bold">Barcode</span> : {{ Product1.barcode }}</h3>
+                </div>
+                <form>
+                    <div class="mb-5">
+                        <div class="flex">
+                            <div class="bg-[#eee] flex justify-center items-center ltr:rounded-l-md rtl:rounded-r-md px-3 font-semibold border ltr:border-r-0 rtl:border-l-0 border-[#e0e6ed] dark:border-[#17263c] dark:bg-[#1b2e4b]">
+                                Bath
+                            </div>
+                            <div class="bg-[#eee] flex justify-center items-center rounded-none px-3 font-semibold border ltr:border-r-0 rtl:border-l-0 border-[#e0e6ed] dark:border-[#17263c] dark:bg-[#1b2e4b]">
+                                ใส่จำนวนสินค้า
+                            </div>
+                            <input type="text" placeholder="" class="form-input ltr:rounded-l-none rtl:rounded-r-none flex-1" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <button type="button" class="btn btn-secondary" id="custom-button12" @click="showAlert()">เพิ่มรายการสินค้า</button>
+        </div>
+    </div>
+</div>
+{% empty %}
+        <p class="text-center text-red-500">ไม่พบสินค้าในหมวดหมู่นี้</p>
+{% endfor %}
+</div>
+
+
+
+<script>
+   
+    const inputSelect = document.getElementById("custom-button7");
+
+    function AddProduct() {
+        console.log("✅ ปุ่มเพิ่มรายการสินค้าถูกกด!");
+    }
+    
+    if (inputSelect) {  // ✅ ใช้ตัวแปร inputSelect ที่เก็บปุ่มไว้
+        inputSelect.addEventListener("click", AddProduct);  // ✅ ส่งฟังก์ชันตรง ๆ ไม่ต้อง `()`
+    }
+    
+
+</script>
+    

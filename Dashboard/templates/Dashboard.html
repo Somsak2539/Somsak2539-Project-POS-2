@@ -1,0 +1,1134 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'font-forweb/css/all.css' %}" />
+   
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+   <!-- Favicon -->
+   <link rel="icon" type="image/x-icon" href="{% static 'favicon.png' %}">
+
+   <!-- Google Fonts -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+   
+   <!-- CSS Files -->
+   <link rel="stylesheet" type="text/css" media="screen" href="{% static 'assets/css/perfect-scrollbar.min.css' %}">
+   <link rel="stylesheet" href="{% static 'assets/css/highlight.min.css' %}">
+
+   <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+   <link rel="stylesheet" type="text/css" media="screen" href="{% static 'assets/css/style.css' %}">
+   <link defer rel="stylesheet" type="text/css" media="screen" href="{% static 'assets/css/animate.css' %}">
+   
+   <!-- JavaScript Files -->
+   <script src="{% static 'assets/js/perfect-scrollbar.min.js' %}"></script>
+   <script defer src="{% static 'assets/js/popper.min.js' %}"></script>
+   <script defer src="{% static 'assets/js/tippy-bundle.umd.min.js' %}"></script>
+   <script defer src="{% static 'assets/js/sweetalert.min.js' %}"></script>
+     
+
+
+
+    
+  </head>
+ 
+  <style>
+
+    /* ✅ ตั้งค่าหน้าตัวอักษรหลัก */
+body {
+  font-family: font-family: "Angsana New" ;
+  font-size: 15px; /* ขนาดตัวอักษรเหมาะสม */
+ 
+  text-align: center;
+  background-color: white; /* ✅ พื้นหลังขาว */
+  margin: 0;
+  padding: 10px;
+}
+
+/* ✅ ตั้งค่าโครงสร้างของ Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+/* ✅ ปรับแต่งเนื้อหา Modal */
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* ✅ ปุ่มปิด */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+}
+
+/* ✅ หัวข้อ */
+h5 {
+    
+    margin: 5px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* ✅ ตั้งค่าโครงสร้างตาราง */
+table {
+   
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+/* ✅ ตั้งค่าหัวข้อของตาราง */
+th {
+
+    
+    border-bottom: 2px solid black;
+    padding: 8px;
+   
+    font-size: 14px;
+    color: #555;
+}
+
+/* ✅ ตั้งค่ารายการสินค้า */
+td {
+    padding: 8px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #ccc;  /* ✅ เส้นขีดล่างทุกแถว */
+}
+
+/* ✅ ปรับแต่งส่วนท้าย */
+.total {
+    font-weight: bold;
+    background-color: #f8f8f8;
+}
+
+/* ✅ ปุ่มพิมพ์ */
+.print-btn {
+    margin-top: 15px;
+    padding: 8px 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.print-btn:hover {
+    background: #0056b3;
+}
+
+
+
+
+
+
+
+
+
+/*ทำเพื่อให้ scrol ได้สำหรับใบเสร็จ*/
+
+
+.scrollable-tbody {
+  max-height: 250px; /* ✅ กำหนดความสูงที่สามารถเลื่อน Scroll */
+  overflow-y: auto; /* ✅ อนุญาตให้มีการ Scroll */
+  display: block;
+  border-bottom: 1px solid #ccc;
+}
+
+/* ✅ ทำให้ตารางดูดีขึ้น */
+.scrollable-tbody table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.scrollable-tbody tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.receipt-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.receipt-table th, .receipt-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.modal-content {
+  width: 90%;
+  max-width: 500px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ✅ ปรับแต่งเมื่อพิมพ์ */
+@media print {
+  @page {
+    size: 48mm 210mm; /* ✅ กำหนดขนาดกระดาษ */
+    margin: 0; /* ✅ ไม่มีขอบขาว */
+  }
+
+  body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      font-family: "TH Sarabun New", "Angsana New", "Courier New", monospace;
+      font-size: 14px; /* ขนาดตัวอักษรเหมาะสม */
+      text-align: left;
+      background-color: white; /* ✅ พื้นหลังขาว */
+      margin: 0;
+      padding: 10px;
+  }
+
+  .modal-content {
+      width: 80mm;
+      padding: 10px;
+      margin: 0 auto;
+      text-align: left;
+      border: none;
+  }
+
+  .receipt-table {
+      width: 100%;
+      border-collapse: collapse;
+  }
+
+  .receipt-table th, .receipt-table td {
+      padding: 5px;
+      border-bottom: 1px solid black;
+  }
+
+  .total {
+      font-weight: bold;
+      border-top: 2px solid black;
+  }
+
+  .thanks {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 10px;
+  }
+
+  .print-btn, .close {
+      display: none; /* ซ่อนปุ่มเมื่อพิมพ์ */
+  }
+}
+
+
+    
+    
+    
+    </style>
+
+
+  <body>
+    <div class="tapbar">
+
+
+      <div class="contlrolBox2">
+        <button ype="button" class="contlrolBox2-btn">
+          <i class="fa-solid fa-user"></i>
+        </button>
+
+        <div class="contlrolBox2-opption" id="dropdownMenu">
+          <a href="{% url 'login.html' %}" target="_blank" >ชื่อสมาชิก</a>
+          <a href="{% url 'login.html' %}" target="_blank" >ระหัสสมาชิก</a>
+          <a href="{% url 'login.html' %}" target="_blank" >รายงานพนักงานที่อยู่ขณะนี้</a>
+          <a href="{% url 'login.html' %}" target="_blank" >การล็อกอินเข้าสู่พนักงาน</a>
+        </div>
+      </div>
+
+
+
+      <div class="contlrolBox3">
+
+        <div x-data="modal">
+        <button type="button" class="contlrolBox3-btn" @click="toggle">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+
+        <div class="fixed inset-0 z-[999] hidden overflow-y-auto bg-[black]/60"
+        :class="open && '!block'">
+      <div class="flex min-h-screen items-start justify-center px-4"
+          @click.self="open = false">
+          <div x-show="open" x-transition="" x-transition.duration.300=""
+              class="panel my-8 w-full max-w-lg overflow-hidden rounded-lg border-0 p-0">
+              <div
+                  class="flex items-center justify-between bg-[#fbfbfb] px-5 py-3 dark:bg-[#121c2c]">
+                  <h5 class="text-lg font-bold">กรุณาเลือกรายการสินค้า</h5>
+                  <button type="button" class="text-white-dark hover:text-dark"
+                      @click="toggle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24px"
+                          height="24px" viewbox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="1.5"
+                          stroke-linecap="round" stroke-linejoin="round"
+                          class="h-6 w-6">
+                          <line x1="18" y1="6" x2="6" y2="18"></line>
+                          <line x1="6" y1="6" x2="18" y2="18"></line>
+                      </svg>
+                  </button>
+              </div>
+              <div class="p-5">
+                  <div class="mb-5" x-data="{tab: 'home'}">
+                      <div>
+                          <ul
+                              class="mt-3 flex flex-wrap border-b border-white-light dark:border-[#191e3a]">
+                              <li>
+                                  <a href="javascript:;"
+                                      class="-mb-[1px] block border border-transparent p-3.5 py-2 hover:text-primary dark:hover:border-b-black"
+                                      :class="{'!border-white-light !border-b-white  text-primary dark:!border-[#e2a03f] dark:!border-b-black' : tab  === 'home'}"
+                                      @click="tab = 'home'">
+
+
+                                      <!-- placeholder -->
+                                      <form id="searchForm">
+                                        <select id="categorySelect" name="category" class="selectize">
+                                         <!-- <option value="">-- ทุกหมวดหมู่ --</option>-->
+                                        {% for category in categories %}
+                                        {% if category.id == 2 or category.id == 10 or category.id == 27 or category.id == 28 or category.id == 29 or category.id == 30 %}  <!-- ตัวนี้คือประเภทของ catagory  -->
+                                        <option value="{{ category.id }}">{{ category.name }}</option>
+                                           
+                                            {% endif %}   <!-- เหลือกบางประเถท  -->
+                                        {% endfor %}
+                                    </select>
+                                         <button type="submit" class="btn btn-success mt-3">ค้นหา</button>
+                                   </form>
+                                    
+
+
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="javascript:;"
+                                      class="-mb-[1px] block border border-transparent p-3.5 py-2 hover:text-primary dark:hover:border-[#191e3a] dark:hover:border-b-black"
+                                      :class="{'!border-white-light !border-b-white text-primary dark:!border-[#191e3a] dark:!border-b-black' : tab  === 'profile'}"
+                                      @click="tab = 'profile'">พิมพ์ใบกำกับภาษี</a>
+                              </li>
+
+                          </ul>
+                      </div>
+                      <div class="flex-1 pt-5 text-sm">
+
+                      <template x-if="tab === 'home'">
+                          <div class="active">
+                              <h3 class="mb-6 text-sm font-bold md:text-base">รายการสินค้าตามประเภทที่เลือก</h3>
+                      
+                              <!-- Grid ครอบสินค้าทั้งหมด -->
+                              <div id="productList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+
+                                  
+                                <script>
+                                  async function showAlert() {
+                                      new window.Swal({
+                                          icon: 'success',
+                                          title: 'คุณได้ทำการเพิ่มสินค้าเรียบร้อยแล้ว',
+                                          text: 'SOMSAK!',
+                                          padding: '2em',
+                                      });
+                                  }
+                              </script>
+
+                      </template>
+
+                      
+                          <template x-if="tab === 'profile'">
+                              <div>
+                                  <div class="flex items-start">
+                                      <div
+                                          class="h-20 w-20 flex-none ltr:mr-4 rtl:ml-4">
+                                          <img src="{% static 'assets/images/settings-dark.svg' %}"
+                                              alt="image"
+                                              class="m-0 h-20 w-20 rounded-full object-cover ring-4 ring-[#ebedf2] dark:ring-white-dark">
+                                      </div>
+
+                                      <div class="flex-auto">
+                                          <h5 class="mb-4 text-xl font-medium">
+                                              รายการที่จะต้องพิมพ์ใบกำกับภาษี</h5>
+                                          <p
+                                              class="text-white-dark dark:text-white-dark/70">
+                                              Cras sit amet nibh libero, in
+                                              gravida nulla. Nulla vel metus
+                                              scelerisque
+                                              ante sollicitudin. Cras purus odio,
+                                              vestibulum in vulputate at, tempus
+                                              viverra turpis. Fusce condimentum
+                                              nunc ac nisi vulputate fringilla.
+                                              Donec lacinia congue felis in
+                                              faucibus.
+                                          </p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </template>
+                          <template x-if="tab === 'contact'">
+                              <div>
+                                  <p>
+                                      Lorem ipsum dolor sit amet, consectetur
+                                      adipisicing elit, sed do eiusmod tempor
+                                      incididunt ut labore et dolore magna aliqua.
+                                      Ut enim ad minim veniam, quis
+                                      nostrud exercitation ullamco laboris nisi ut
+                                      aliquip ex ea commodo consequat.
+                                      Duis aute irure dolor in reprehenderit in
+                                      voluptate velit esse cillum dolore eu
+                                      fugiat nulla pariatur. Excepteur sint
+                                      occaecat cupidatat non proident, sunt in
+                                      culpa qui officia deserunt mollit anim id
+                                      est laborum.
+                                  </p>
+                              </div>
+                          </template>
+                          <div style="display: none">Disabled</div>
+                      </div>
+                  </div>
+                  <div class="mt-8 flex items-center justify-end">
+                      <button type="button" class="btn btn-outline-danger"
+                          @click="toggle">Discard</button>
+                      
+                       
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+      </div>
+
+
+
+
+
+
+      <div class="contlrolBox4">
+        <button class="contlrolBox4-btn">
+          <i class="fa-solid fa-calendar-days"></i>
+        </button>
+        <div class="contlrolBox4-opption" id="dropdownMenu">
+          <a href="{% url 'indexDashboardUser' %}" target="_blank">ยอดขายประจำวัน</a>
+          <a href="{% url 'indexDashboardUser' %}" target="_blank">ยอดขายประจำเดือน</a>
+          <a href="{% url 'indexDashboardUser' %}" target="_blank">ยอดขายเฉลี่ยต่อบิล</a>
+          <a href="{% url 'indexDashboardUser' %}" target="_blank">กราฟยอดขายรายวัน และรายเดือน</a>
+        </div>
+      </div>
+
+      <div class="contlrolBox5">
+        <button class="contlrolBox5-btn">
+          <i class="fa-regular fa-bell"></i>
+        </button>
+        <div class="contlrolBox5-opption" id="dropdownMenu">
+          <a href="{% url 'product1' %}">สินค้าใกล้จะหมด </a>
+          <a href="{% url 'product1' %}">แจ้งเตือนการคืนสินค้า</a>
+          
+        </div>
+      </div>
+
+      <div class="contlrolBox6">
+        <button class="contlrolBox6-btn">
+          <i class="fa-solid fa-clipboard"></i>
+        </button>
+        <div class="contlrolBox6-opption" id="dropdownMenu">
+          <a href="#">รายงานยอดขายรายวัน</a>
+          <a href="#">รายงานยอดขายรายเดือน</a>
+          <a href="#">ดูรายการสินค้า</a>
+          <a href="#">จัดการลูกค้า</a>
+          <a href="#">จัดการพนักงาน</a>
+          <a href="#">ดูรายงาน</a>
+        </div>
+      </div>
+
+      <div class="contlrolBox7">
+        <button class="contlrolBox7-btn">
+          <i class="fa-solid fa-gear"></i>
+        </button>
+        <div class="contlrolBox7-opption" id="dropdownMenu">
+          <a href="#">เพื่มรายการสินค้า</a>
+          <a href="#"
+            >logout</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-container">
+      <div class="box">
+        <div class="A">
+
+
+          <div class="imgMangae">
+            <h4>สแกนเพื่อชำระเงิน</h4>
+            <div class="img1">
+                <img
+                    id="qrCodeImage"
+                    src=""
+                    alt="PromptPay QR Code"
+                    style="display: none;" 
+                />
+            </div>
+       
+
+            <!--src="{% static 'assets/dadhBoard/img/S__32989197.jpg' %}"-->
+          
+          </div>
+          <div class="aa1">
+            <div class="aa2">
+              <p class="p1">เวลา : <span id="time"></span></p>
+              <p class="p1">วันที่ : <span id="current-datetime"></span></p>
+              <p class="p1">สาขา โพนทอง</p>
+              <p class="p1">ระหัสเครื่อง: {{request.user.id}}</p>
+            </div>
+
+            <div class="aa3">
+              <p class="p1">แคลชเชีย: {{request.user.username}}</p>
+              <p class="p1">เลขที่ใบเสร็จ: {{request.user.id}}</p>
+              <p class="p1">พนักงานขาย:{{request.user.username}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="removeBox1">
+          <div class="box2ControlBotom0">
+            <div class="box2ControlBotom1">
+              <div class="result-box4">Total</div>
+              <div class="result-box5">รับเงิน</div>
+              <div class="result-box6">ทอนเงิน</div>
+            </div>
+
+            <div class="box2ControlBotom">
+              <div class="result-box7" id="totalAmount">0</div>
+              <div class="result-box8" id="getMonney">0</div>
+              <div class="result-box9" id="withDraw">0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="box3">
+          <div class="controlTable">
+            <div class="table-container">
+              <table class="styled-table" id="itemTable">
+                <thead>
+                  <tr>
+                    <th>ลำดับ</th>
+                    <th>barcode</th>
+                    <th>ชื่อสินค้า</th>
+                    <th>หน่อยนับ</th>
+                    <th>จำนวณ</th>
+                    <th>ราคา</th>
+                    <th>Stock</th>
+                    <th>ลบรายการ</th>
+
+                  </tr>
+                </thead>
+                <tbody id="itemTableBody">
+                 
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+
+             
+          
+          <div class="b1_1">
+            <div class="b1_1_1">
+              <button class="custom-button2" id="row11#"> - <!-- หมู่กะทะ --></button>
+              <button class="custom-button2" id="row12#">- <!--คอหมูย่าง--></button>
+              <button class="custom-button2" id="row13#">- <!--ไส้อ่อน--></button>
+              <button class="custom-button2" id="row14#">- <!--ไส่ใหญ่--></button>
+              <button class="custom-button2" id="row15">- <!--ไส่ใหญ่--></button>
+              <button class="custom-button3" id="row16">Barcode</button>
+            </div>
+          </div>
+
+          <div class="b1_1_1">
+            <div class="contlrolBox1">
+              <button class="contlrolBox1-btn">
+                <i class="fa-brands fa-product-hunt"></i>
+              </button>
+              <div class="contlrolBox1-opption" id="dropdownMenu">
+                <div class="controlButton1">
+                  <button class="custom-button2" id="">ไหล่หมู</button>
+                  <button class="custom-button2" id="">สันนอก</button>
+                  <button class="custom-button2" id="">น้ำแข็ง</button>
+                  <button class="custom-button2" id="">ตับอ่อน</button>
+                  <button class="custom-button2" id="">ผัก</button>
+                  <button class="custom-button2" id="">ขนมปั่ง</button>
+                </div>
+              </div>
+            </div>
+            <button class="custom-button2" id="row17#">- <!--ไหล่หมู--></button>
+            <button class="custom-button2" id="row18#">- <!--สันนอก--></button>
+            <button class="custom-button2" id="row19#">- <!--สามชั้น--></button>
+            <button class="custom-button2" id="row20">- <!--กระดูกหมูชูป--></button>
+            <div x-data="modal">
+
+
+
+
+              <!-- button -->
+              <button type="button" class="custom-button2" @click="toggle">แสดงรายการ</button>
+              <!-- modal -->
+              <div class="fixed inset-0 bg-[black]/60 z-[999] hidden overflow-y-auto" :class="open && '!block'">
+                  <div class="flex items-start justify-center min-h-screen px-4" @click.self="open = false">
+                      <div class="panel border-0 p-0 rounded-lg overflow-hidden w-full max-w-lg my-8 animate__animated animate__fadeInUp">
+                          <div class="p-5">
+                              <div class="dark:text-white-dark/70 text-base font-medium text-[#1f2937]">
+                                  <h5> ร้านค้าของคุณ</h5>
+                  
+                                  <h5>เวลาที่บันทึก: <span id="time">-</span></h5>
+          
+                                  <table class="receipt-table1">
+                                      <thead>
+                                          <tr>
+                                              <th>สินค้า</th>
+                                              <th class="price">จำนวน</th>
+                                              <th class="price">ราคา</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody id="stockAdjustments1">
+                                          <tr><td colspan="3">🔄 กำลังโหลดข้อมูล...</td></tr>
+                                      </tbody>
+                                      <tfoot>
+                                          <tr>
+                                              <td colspan="2">รวม</td>
+                                              <td class="price" id="total-price">0.00 บาท</td>
+                                          </tr>
+                                      </tfoot>
+                                  </table>
+                              </div>
+                              <div class="flex justify-end items-center mt-8">
+                                  <button type="button" class="btn btn-outline-danger" @click="toggle">ปิดหน้าต่าง</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+           
+          
+
+            <button class="custom-button2" id="row22">Clean</button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    
+     
+          
+
+
+
+
+
+
+
+
+
+      <div class="box">
+        <div class="b21">
+          <div id="calculatorDisplay" class="result-box">0</div>
+          <i id="currency">บาท</i>
+        </div>
+
+
+
+
+
+            <div class="b23">
+
+
+              <div class="manageImg2" id="product-container">
+                    <div class="img2">
+                       <img src="{% static "assets/images/out_stock.jpg" %}" alt="{{ product.name }}" />
+                     </div>
+              </div>
+
+        
+              <div class="Text1" id="product-container1">   <!-- ถ้าต้องการที่จะทำการเปลี่ยนขนาดตัวหนังสือต้องเข้าไปที่  h6-->
+                 <h6>
+                     -สินค้าใน stock : 1 pcs <br />
+                     -ชื่อสินค้า : เหล้าขาว <br />
+                     -รายระเอียดสินค่า : สีเขียว<br />
+                     -ราคาสินค้าต่อหน่วย : 15 บาท <br />
+                 </h6>
+              </div>
+           
+
+          
+              <div class="bb26">
+                      <div class="bb27">
+                         <button class="custom-button4">รับเงิน</button>
+                      </div>
+
+                      <div class="bb28">
+                        <button class="custom-button5" value="remove">ลบรายการ</button>
+                      </div>
+
+                      <div class="bb29">
+                        <button class="custom-button6" value="add">เพิ่มรายการ</button>
+                      </div>
+              </div>
+
+          </div>
+
+
+
+
+        <div class="b22">
+          <div class="b22_1">
+            <div class="bb24">
+              <button class="custom-button calulator" value="7">7</button>
+              <button class="custom-button calulator" value="8">8</button>
+              <button class="custom-button calulator" value="9">9</button>
+            </div>
+            <div class="bb24">
+              <button class="custom-button calulator" value="4">4</button>
+              <button class="custom-button calulator" value="5">5</button>
+              <button class="custom-button calulator" value="6">6</button>
+            </div>
+            <div class="bb25">
+              <button class="custom-button calulator" value="1">1</button>
+              <button class="custom-button calulator" value="2">2</button>
+              <button class="custom-button calulator" value="3">3</button>
+            </div>
+            <div class="bb25">
+              <button class="custom-button calulator" value="0">0</button>
+              <button class="custom-button operrator1 operrator2" value=".">
+                .
+              </button>
+              <!--ทำการประกาศ class อีกตัวเลยสามารถทำให้โปรแกรมรันตามความต้องการ เพราะมันเป็น class ที่3 -->
+
+              <button class="custom-button delete" id="clear-btn" value="c">
+                c
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+       <!--เรียกใช้สำหรับfuntion ดูใบเสร็จ -->
+
+
+
+        <button id="receiptBtn" class="print-btn" onclick="openModal()" style="display: none;"> Click
+       
+
+       </button>
+    
+    <!-- ✅ ป๊อปอัปใบเสร็จ -->
+<!-- ✅ ป๊อปอัปใบเสร็จ -->
+<div id="receiptModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+
+    <h5> ร้านค้าของคุณ</h5>
+    <h5>รับมา: <span id="enteredAmount">-</span></h5>
+    <h5>ทอน: <span id="change">-</span></h5>
+    <h5>เวลาที่บันทึก: <span id="timestamp">-</span></h5>
+
+    <table class="receipt-table">
+      <thead>
+        <tr>
+          <th>สินค้า</th>
+          <th class="price">จำนวน</th>
+          <th class="price">ราคา</th>
+        </tr>
+      </thead>
+      <tbody id="stockAdjustments">
+        <tr><td colspan="3">🔄 กำลังโหลดข้อมูล...</td></tr>
+      </tbody>
+      <tfoot>
+        <tr class="total">
+          <td colspan="2">รวม</td>
+          <td class="price" id="TotalAmount1">0.00 บาท</td>
+        </tr>
+      </tfoot>
+    </table>
+   
+    <h2 class="thanks">ขอบคุณที่ใช้บริการร้านเหมยน่ะ</h2>
+   
+    
+    <button class="print-btn" onclick="printReceipt()">พิมพ์ใบเสร็จ</button>
+    <button class="print-btn" onclick="closeModal()">ปิดหน้าต่าง</button>
+    
+
+    
+  </div>
+</div>
+    
+
+
+    
+
+
+
+
+<!--****************************************** แสดงค่าที่อยู่เฉยๆๆ*************************************************-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <script src="{% static 'assets/dadhBoard/js/script.js' %}"></script>
+    <link rel="stylesheet" href="{% static "assets/dadhBoard/css/style1.css"%}">
+
+  
+
+  
+
+
+  </body>
+
+
+   
+  <script >
+
+
+    function openModal() {
+        document.getElementById("receiptModal").style.display = "flex";
+     
+
+        //document.getElementById("modal-date").innerText = new Date().toLocaleDateString();
+      
+      
+    }
+    
+    function closeModal() {
+        document.getElementById("receiptModal").style.display = "none";
+    }
+    
+    function printReceipt() {
+      console.log("🖨️ กำลังเตรียมพิมพ์...");
+  
+      const printContent = document.querySelector(".modal-content").innerHTML;
+      const originalContent = document.body.innerHTML;
+  
+      document.body.innerHTML = printContent;
+  
+      setTimeout(() => {
+
+        
+          window.print();
+          console.log("✅ พิมพ์ใบเสร็จสำเร็จ!");
+          document.body.innerHTML = originalContent;
+          location.reload(); // ✅ รีเฟรชหลังจากพิมพ์เสร็จ
+      }, 500);
+  }
+  
+
+
+  //-----------------------สำหรับเรียกใช้การดูใบเสร็จเฉยๆๆ----------------------------
+
+
+
+    
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--*****************************************แสดงค่าดูรายการ receipt************************************************-->
+<script>
+
+
+</script>
+
+
+<!--สำหรับการเรียกใช้ pop up เข้ามาทำงานในนี้-->
+
+<!-- <script>
+   document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("searchForm").addEventListener("submit", function(event) {
+          event.preventDefault(); // ✅ ป้องกันหน้าเว็บรีโหลด
+  
+          var categorySelect = document.getElementById("categorySelect");
+          if (!categorySelect) {
+              console.error("⚠️ ไม่พบ element ที่มี id='categorySelect'");
+              return;
+          }
+  
+          var categoryId = categorySelect.value; // ✅ ดึงค่าหมวดหมู่ที่เลือก
+          var productList = document.getElementById("productList"); // ✅ พื้นที่แสดงสินค้า
+  
+          fetch(`/Dashboard/?category=${categoryId}`, {
+              headers: { "X-Requested-With": "XMLHttpRequest" } // ✅ แจ้ง Django ว่าเป็น AJAX Request
+          })
+          .then(response => response.text()) 
+          .then(data => {
+              productList.innerHTML = data; // ✅ อัปเดตรายการสินค้าแบบ Real-Time
+          })
+          .catch(error => console.error("เกิดข้อผิดพลาด: ", error));
+      });
+  });
+  </script>-->
+  
+  
+
+
+<!-- ✅ รายระเอียดใน pop UP-->
+
+  <script>
+
+    function formatInput(input) {
+      let value = input.value;
+  
+      // ✅ อนุญาตให้พิมพ์ตัวเลขและจุดทศนิยมเท่านั้น
+      input.value = value.replace(/[^0-9.]/g, ""); 
+  
+      // ✅ ป้องกันไม่ให้ใส่จุด `.` มากกว่า 1 ครั้ง
+      let parts = input.value.split(".");
+      if (parts.length > 2) {
+          input.value = parts[0] + "." + parts.slice(1).join(""); 
+      }
+  
+      // ✅ จำกัดทศนิยมไม่เกิน 2 ตำแหน่งขณะพิมพ์
+      if (parts.length === 2 && parts[1].length > 2) {
+          input.value = parts[0] + "." + parts[1].slice(0, 2);
+      }
+  
+      // ✅ จำกัดจำนวนเต็มไม่เกิน 2 หลัก
+      if (parts[0].length > 2) {
+          input.value = parts[0].slice(-2) + (parts[1] ? "." + parts[1] : "");
+      }
+  }
+  
+  function validateDecimal(input) {
+      let value = input.value;
+  
+      // ✅ ถ้าค่าว่าง หรือไม่ใช่ตัวเลข ให้ตั้งเป็น 1.00
+      if (value === "" || isNaN(value)) {
+          input.value = "1.00";
+          return;
+      }
+  
+      let num = parseFloat(value);
+  
+      // ✅ ถ้าค่าต่ำกว่า 0.01 ให้ตั้งเป็น 0.01
+      if (num < 0.01) {
+          input.value = "0.01";
+          return;
+      }
+  
+      // ✅ ถ้าค่ามากกว่า 99.99 ให้ตั้งเป็น 99.99
+      if (num > 99.99) {
+          input.value = "99.99";
+          return;
+      }
+  
+      // ✅ บังคับให้มีทศนิยม 2 ตำแหน่งเมื่อออกจากช่อง
+      input.value = num.toFixed(2);
+  }
+  
+  
+  
+    
+
+
+ 
+
+    function resetResultBox() {
+        setTimeout(() => {  // ✅ หน่วงเวลาเพื่อให้แน่ใจว่า `.result-box` อยู่ใน DOM
+            let resultBox = document.querySelector(".result-box");
+    
+            if (resultBox) {
+                resultBox.textContent = "0";  // ✅ รีเซ็ตค่าเป็น 0
+            } else {
+                console.error("⚠️ ไม่พบ .result-box ใน DOM");
+            }
+        }, 100);  // ✅ รอ 100ms ก่อนรีเซ็ตค่า
+    }
+    
+
+    
+
+
+
+
+
+
+
+</script>
+
+
+
+    
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var categorySelect = document.getElementById("categorySelect");
+  
+      document.getElementById("searchForm").addEventListener("submit", function(event) {
+          event.preventDefault(); // ✅ ป้องกันหน้าเว็บรีโหลด
+  
+          var categoryId = categorySelect.value; // ✅ ดึงค่าหมวดหมู่ที่เลือก
+          var productList = document.getElementById("productList"); // ✅ พื้นที่แสดงสินค้า
+  
+          fetch(`/Dashboard/?category=${categoryId}`, {
+              headers: { "X-Requested-With": "XMLHttpRequest" } // ✅ แจ้ง Django ว่าเป็น AJAX Request
+          })
+          .then(response => response.text()) 
+          .then(data => {
+              productList.innerHTML = data; // ✅ อัปเดตรายการสินค้าแบบ Real-Time
+          })
+          .catch(error => console.error("เกิดข้อผิดพลาด: ", error));
+      });
+  });
+  
+  
+    </script>
+
+
+
+<!--สามารถที่จะให้ cersorตารางให้ไปอยู่ที่ด้านขวา-->
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const container = document.querySelector('.table-container');
+    container.scrollLeft = container.scrollWidth;
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer src="{% static 'js/ajax.js' %}"></script>
+   <!-- JavaScript Files -->
+   <script src="{% static 'assets/js/swiper-bundle.min.js' %}"></script>
+   <script src="{% static 'assets/js/highlight.min.js' %}"></script>
+   <script src="{% static 'assets/js/alpine-collaspe.min.js' %}"></script>
+   <script src="{% static 'assets/js/alpine-persist.min.js' %}"></script>
+   <script defer src="{% static 'assets/js/alpine-ui.min.js' %}"></script>
+   <script defer src="{% static 'assets/js/alpine-focus.min.js' %}"></script>
+   <script defer src="{% static 'assets/js/alpine.min.js' %}"></script>
+   <script src="{% static 'assets/js/custom.js' %}"></script>
+   
+
+
+
+</html>

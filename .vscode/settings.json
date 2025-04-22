@@ -1,0 +1,9 @@
+{
+
+    
+    "python.linting.enabled": false,  // ปิด Linting ทั้งหมด
+    "python.analysis.diagnosticSeverityOverrides": {
+        "unresolvedImport": "none",  // ปิดการแจ้งเตือน import ผิด
+        "unusedImport": "none"       // ปิดการแจ้งเตือน unused import
+    }
+}

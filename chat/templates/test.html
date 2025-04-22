@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Private Chat Room</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; padding: 20px; }
+        #chat-log { border: 1px solid #ccc; height: 300px; overflow-y: scroll; padding: 10px; background: #f9f9f9; margin-bottom: 10px; }
+        #chat-message-input { width: 80%; padding: 10px; }
+        #chat-message-submit, #chat-file-submit { padding: 10px 20px; background: #28a745; color: white; border: none; cursor: pointer; }
+        .chat-message { margin-bottom: 5px; }
+        .chat-message small { color: #888; }
+    </style>
+</head>
+<body>
+
+    <h2>Private Chat Room</h2>
+    <p><strong>Room Name:</strong> <span id="room-name">{{ room_name }}</span></p>
+    <p><strong>Username:</strong> <span id="username">{{ request.user.username }}</span></p>
+
+    <div id="chat-log">
+        {% for message in messages %}
+            <div class="chat-message">
+                <strong>{% if message.username == request.user.username %} (You) {% endif %}{{ message.username }}</strong>: 
+                {% if message.content %}
+                    {{ message.content }}
+                {% elif message.file %}
+                    📎 <a href="/media/{{ message.file }}" target="_blank">ดาวน์โหลดไฟล์</a>
+                {% endif %}
+                <br>
+                <small>{{ message.timestamp }}</small>
+            </div>
+        {% endfor %}
+    </div>
+
+    <input id="chat-message-input" type="text" placeholder="พิมพ์ข้อความของคุณที่นี่...">
+    <button id="chat-message-submit">ส่ง</button>
+
+    <input type="file" id="chat-file-input">
+    <button id="chat-file-submit">ส่งไฟล์</button>
+
+    <script>
+        const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
+        const chatSocket = new WebSocket(`${wsScheme}://${window.location.host}/ws/chat/{{ room_name }}/`);
+
+        chatSocket.onopen = function() {
+            console.log("✅ WebSocket Connected - Ready to send messages.");
+        };
+
+        chatSocket.onmessage = function(event) {
+            console.log("📩 Received Message: ", event.data);
+            const data = JSON.parse(event.data);
+            const chatLog = document.getElementById("chat-log");
+            const messageElement = document.createElement("div");
+            messageElement.classList.add("chat-message");
+
+            if (data.message) {
+                messageElement.innerHTML = `<strong>${data.sender}</strong>: ${data.message} <br><small>${data.timestamp}</small>`;
+            } else if (data.file) {
+                messageElement.innerHTML = `<strong>${data.sender}</strong>: 📎 <a href="/media/chat_files/${data.file}" target="_blank">ดาวน์โหลดไฟล์</a> <br><small>${data.timestamp}</small>`;
+            }else if (data.type === "chat_history") {
+                chatLog.innerHTML = "";
+                data.messages.forEach(msg => {
+                    displayMessage(msg);
+                });
+                scrollToBottom();  // ✅ เลื่อนลงหลังจากโหลดแชทเสร็จ
+            } else {
+                displayMessage(data);
+                scrollToBottom();  // ✅ เลื่อนลงเมื่อมีข้อความใหม่
+            }
+
+
+
+
+
+
+
+            chatLog.appendChild(messageElement);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        };
+
+        chatSocket.onclose = function(event) {
+            console.error("❌ WebSocket Closed - Connection lost.");
+        };
+
+        document.getElementById("chat-message-submit").onclick = function() {
+            const messageInput = document.getElementById("chat-message-input");
+            const message = messageInput.value.trim();
+
+            console.log("✉️ กำลังส่งข้อความ: ", message);
+
+            if (message === "") {
+                alert("⚠️ กรุณาพิมพ์ข้อความก่อนส่ง!");
+                return;
+            }
+
+            chatSocket.send(JSON.stringify({ "message": message }));
+            messageInput.value = "";
+        };
+
+        document.getElementById("chat-message-input").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                document.getElementById("chat-message-submit").click();
+            }
+        });
+
+        document.getElementById("chat-file-submit").onclick = function() {
+            const fileInput = document.getElementById("chat-file-input");
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert("⚠️ กรุณาเลือกไฟล์ก่อนส่ง!");
+                return;
+            }
+
+            console.log("📂 กำลังส่งไฟล์: ", file.name);
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const base64File = event.target.result.split(",")[1];
+                chatSocket.send(JSON.stringify({
+                    "file": base64File,
+                    "filename": file.name,
+                    "filetype": file.type
+                }));
+                console.log("✅ ไฟล์ถูกส่งไปยัง WebSocket", file.name);
+            };
+            reader.readAsDataURL(file);
+        };
+
+
+//***************************************************************************
+
+        function scrollToBottom() {
+            const chatLog = document.getElementById("chat-log");
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+       
+
+        document.getElementById("chat-message-submit").onclick = function() {
+            const messageInput = document.getElementById("chat-message-input");
+            const message = messageInput.value.trim();
+        
+            if (message === "") {
+                alert("⚠️ กรุณาพิมพ์ข้อความก่อนส่ง!");
+                return;
+            }
+        
+            chatSocket.send(JSON.stringify({ "message": message }));
+            messageInput.value = "";
+            setTimeout(scrollToBottom, 100);  // ✅ เลื่อนลงเมื่อส่งข้อความ
+        };
+        
+
+
+        document.getElementById("chat-file-submit").onclick = function() {
+            const fileInput = document.getElementById("chat-file-input");
+            const file = fileInput.files[0];
+        
+            if (!file) {
+                alert("⚠️ กรุณาเลือกไฟล์ก่อนส่ง!");
+                return;
+            }
+        
+            console.log("📂 กำลังส่งไฟล์: ", file.name);
+        
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const base64File = event.target.result.split(",")[1];
+                chatSocket.send(JSON.stringify({
+                    "file": base64File,
+                    "filename": file.name,
+                    "filetype": file.type
+                }));
+                console.log("✅ ไฟล์ถูกส่งไปยัง WebSocket", file.name);
+                setTimeout(scrollToBottom, 100);  // ✅ เลื่อนลงเมื่อส่งไฟล์
+            };
+            reader.readAsDataURL(file);
+        };
+        
+
+
+
+
+        window.onload = function() {
+            setTimeout(scrollToBottom, 200);  // ✅ เลื่อนลงทันทีที่โหลดหน้าเว็บ
+        };
+        
+
+
+
+
+//-------------------------------------------------------------
+
+
+
+
+
+
+
+     
+
+    </script>
+
+</body>
+</html>
