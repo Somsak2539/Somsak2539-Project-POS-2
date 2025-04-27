@@ -44,6 +44,39 @@ from django.shortcuts import redirect, reverse
 #@user_passes_test(is_special_admin)
 
 
+
+
+def recriptAdd(request):
+    return render(request,"recriptAdd.html")
+
+
+def recriptRecord(request):
+    return render(request,"recriptRecord.html")
+
+
+
+def Drafducument(request):
+    return render(request,"drafDocument.html")
+
+
+
+def invoiceList(request):
+    
+    return render(request,"invoiceList.html")
+
+
+
+def Sellers(request):
+    
+    return render(request,"Sellers.html")
+
+
+
+def Customers(request):
+    
+    return render(request,"Customers.html")
+
+
 def invoiceAdd(request):
     
     return render(request,"app-invoiceAdd.html")

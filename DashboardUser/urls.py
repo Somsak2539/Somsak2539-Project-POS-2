@@ -21,7 +21,6 @@ path("EditAdd/<int:id>/",views.EditAdd, name="EditAdd"),#5
 path("login_cover/",views.login_cover, name="login_cover"),
 path('logout_cover', views.logout_cover, name='logout_cover'),
 path('eror404/', views.eror404, name='eror404'),
-
 path('apps_ecommerceCart/', views.apps_ecommerceCart, name='apps_ecommerceCart'),
 path("apps-ecommerceCartAjax/",views.apps_ecommerceCartAjax,name="apps-ecommerceCartAjax"),
 path('products/<int:pk>/update-price-stock/', views.update_product_price_stock, name='update_product_price_stock'),
@@ -30,7 +29,11 @@ path('app_invoiceAdd/', views.invoiceAdd, name='app_invoiceAdd'),
 path('apps-invoiceList/', views.appsinvoiceList, name='apps-invoiceList'),
 path('admin/ajax/load-products/', views.load_products, name='ajax_load_products'),
 path('select2/', include('django_select2.urls')),
-
-
+path('Sellers/', views.Sellers, name='Sellers'),
+path('Customers/', views.Customers, name='Customers'),
+path('invoiceList/', views.invoiceList, name='invoiceList'),
+path('Drafducument/', views.Drafducument, name='Drafducument'),
+path('recriptAdd/', views.recriptAdd, name='recriptAdd'),
+path('recriptRecord/', views.recriptRecord, name='recriptRecord'),
  
 ]

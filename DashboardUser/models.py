@@ -13,7 +13,7 @@ class Circulation(models.Model):
      
      
 
-#---------------------------------------------------------- สำหรับ invoce.--------------------------------------
+#---------------------------------------------------------- สำหรับ invoce.หรือเอกสารต่างๆ --------------------------------------
 
 
 
@@ -110,5 +110,25 @@ class InvoiceItem(models.Model):
         total = price_after_discount + tax_amount
 
         return total
+#------------------------------------------------------เก็บข้อมูลใบเสร็จสำหรับอันนี้---------------------------------------------------
 
+class Receipt(models.Model):
+    receipt_number = models.CharField(max_length=50, unique=True)  # เลขที่ใบเสร็จ
+    date = models.DateTimeField(auto_now_add=True)                 # วันที่ออกใบเสร็จ
+    cashier = models.ForeignKey('auth.User', on_delete=models.SET_NULL, null=True)  # พนักงานขาย
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2)  # ยอดรวมทั้งหมด
+    discount = models.DecimalField(max_digits=10, decimal_places=2, default=0)      # ส่วนลด
+    payment_method = models.CharField(max_length=20)  # วิธีชำระเงิน (เงินสด, บัตรเครดิต ฯลฯ)
+    
+    def __str__(self):
+        return f"Receipt {self.receipt_number}"
 
+class ReceiptItem(models.Model):
+    receipt = models.ForeignKey(Receipt, related_name='items', on_delete=models.CASCADE)  # ใบเสร็จนี้
+    product_name = models.CharField(max_length=100)        # ชื่อสินค้า
+    quantity = models.IntegerField()                       # จำนวน
+    price_per_unit = models.DecimalField(max_digits=10, decimal_places=2)  # ราคาต่อหน่วย
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2)        # ราคารวมของสินค้านี้ (ก่อนส่วนลด)
+
+    def __str__(self):
+        return f"{self.product_name} x {self.quantity}"
