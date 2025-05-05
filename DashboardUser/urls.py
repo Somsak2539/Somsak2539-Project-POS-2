@@ -29,11 +29,18 @@ path('app_invoiceAdd/', views.invoiceAdd, name='app_invoiceAdd'),
 path('apps-invoiceList/', views.appsinvoiceList, name='apps-invoiceList'),
 path('admin/ajax/load-products/', views.load_products, name='ajax_load_products'),
 path('select2/', include('django_select2.urls')),
-path('Sellers/', views.Sellers, name='Sellers'),
+
+
+
+path('Sellers/', views.Sellers, name='Sellers'),  # สำหรับกรณีที่ไม่มี seller_id (สร้าง seller ใหม่)
+path('Sellers/<int:seller_id>/', views.Sellers, name='seller_edit'),  # สำหรับการแก้ไขข้อมูล
+path('Sellers/<int:seller_id>/delete/', views.seller_delete, name='seller_delete'),
 path('Customers/', views.Customers, name='Customers'),
 path('invoiceList/', views.invoiceList, name='invoiceList'),
 path('Drafducument/', views.Drafducument, name='Drafducument'),
 path('recriptAdd/', views.recriptAdd, name='recriptAdd'),
 path('recriptRecord/', views.recriptRecord, name='recriptRecord'),
- 
+path('add-invoice/', views.add_invoice, name='add_invoice'),
+path('add-customer/', views.add_customer, name='add_customer'),
+
 ]

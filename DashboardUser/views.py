@@ -39,7 +39,9 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import redirect, reverse
 
-
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Seller  # หรือจากตำแหน่งที่ถูกต้อง
+from .forms import SellerForm, InvoiceForm, CustomerForm
 
 #@user_passes_test(is_special_admin)
 
@@ -66,15 +68,59 @@ def invoiceList(request):
 
 
 
-def Sellers(request):
-    
-    return render(request,"Sellers.html")
+def Sellers(request, seller_id=None):
+    if seller_id:
+        seller = get_object_or_404(Seller, id=seller_id)
+    else:
+        seller = None
+        # เพิ่มวันที่ปัจจุบันเป็นค่าเริ่มต้น
+        current_date = datetime.now().strftime('%Y-%m-%d')
+
+    if request.method == 'POST':
+        form = SellerForm(request.POST, instance=seller)
+        if form.is_valid():
+            form.save()
+            return redirect('Sellers')
+    else:
+        form = SellerForm(instance=seller)
+
+    sellers = Seller.objects.all()
+    return render(request, 'Sellers.html', {
+        'form': form, 
+        'seller': seller, 
+        'sellers': sellers,
+        'current_date': current_date if not seller_id else None
+    })
 
 
+
+def seller_delete(request, seller_id):
+    seller = get_object_or_404(Seller, id=seller_id)
+    if request.method == 'POST':
+        seller.delete()
+    return redirect('Sellers')
+
+
+def add_customer(request):
+    if request.method == 'POST':
+        form = CustomerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('Customers')
+    else:
+        form = CustomerForm()
+    return render(request, 'add_customer.html', {'form': form})
 
 def Customers(request):
-    
-    return render(request,"Customers.html")
+    from .models import Customer
+    customers = Customer.objects.all()
+    form = InvoiceForm()
+    customer_form = CustomerForm()
+    return render(request, "Customers.html", {
+        "customers": customers,
+        "form": form,
+        "customer_form": customer_form
+    })
 
 
 def invoiceAdd(request):
@@ -1081,6 +1127,15 @@ def Circulation2(request):
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
         #การดึงข้อมูลจาก json ----------------------------------------------------------------------------------------------------
         
         
@@ -1213,4 +1268,15 @@ def load_products(request):
     category_id = request.GET.get('category_id')
     products = Product1.objects.filter(category_id=category_id).order_by('name')
     return JsonResponse(list(products.values('id', 'name')), safe=False)
+
+
+def add_invoice(request):
+    if request.method == 'POST':
+        form = InvoiceForm(request.POST)
+        if form.is_valid():
+            invoice = form.save()
+            return redirect('Customers')  # หรือหน้าอื่นที่ต้องการ
+    else:
+        form = InvoiceForm()
+    return render(request, 'add_invoice.html', {'form': form})
 

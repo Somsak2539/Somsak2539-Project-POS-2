@@ -32,6 +32,7 @@ class Seller(models.Model):
     phone = models.CharField("เบอร์โทร", max_length=20)
     email = models.EmailField("อีเมล", blank=True, null=True)
     tax_id = models.CharField("เลขประจำตัวผู้เสียภาษี", max_length=20, blank=True, null=True)
+    created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.name
@@ -64,7 +65,7 @@ class Invoice(models.Model):
     invoice_number = models.CharField("เลขที่เอกสาร", max_length=30, unique=True, editable=False)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, verbose_name="ลูกค้า")
     seller = models.ForeignKey(Seller, on_delete=models.SET_NULL, null=True, verbose_name="ผู้ออกบิล")
-    date = models.DateField("วันที่ออกเอกสาร", default=timezone.now)
+    date = models.DateTimeField("วันที่ออกเอกสาร", default=timezone.now)
     due_date = models.DateField("กำหนดชำระ", blank=True, null=True)
     notes = models.TextField("หมายเหตุ", blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
