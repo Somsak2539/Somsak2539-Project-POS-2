@@ -40,8 +40,10 @@ from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import redirect, reverse
 
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Seller  # หรือจากตำแหน่งที่ถูกต้อง
+from .models import Seller, Customer, Invoice,InvoiceItem  # เพิ่ม Invoice model
 from .forms import SellerForm, InvoiceForm, CustomerForm
+from .models import Customer
+from productapp.models import Product1
 
 #@user_passes_test(is_special_admin)
 
@@ -62,9 +64,9 @@ def Drafducument(request):
 
 
 
-def invoiceList(request):
-    
-    return render(request,"invoiceList.html")
+def invoicelist(request):
+    invoices = Invoice.objects.select_related('customer', 'seller').all().order_by('-date')
+    return render(request, 'invoiceList.html', {'invoices': invoices})
 
 
 
@@ -111,6 +113,24 @@ def add_customer(request):
         form = CustomerForm()
     return render(request, 'add_customer.html', {'form': form})
 
+def customer_edit(request, customer_id):
+    customer = get_object_or_404(Customer, id=customer_id)
+    if request.method == 'POST':
+        form = CustomerForm(request.POST, instance=customer)
+        if form.is_valid():
+            form.save()
+            return redirect('Customers')
+    else:
+        form = CustomerForm(instance=customer)
+    return render(request, 'customer_edit.html', {'form': form, 'customer': customer})
+
+def customer_delete(request, customer_id):
+    customer = get_object_or_404(Customer, id=customer_id)
+    if request.method == 'POST':
+        customer.delete()
+        return redirect('Customers')
+    return redirect('Customers')
+
 def Customers(request):
     from .models import Customer
     customers = Customer.objects.all()
@@ -124,8 +144,45 @@ def Customers(request):
 
 
 def invoiceAdd(request):
+    customers = Customer.objects.all()
+    sellers = Seller.objects.all()
+    products = Product1.objects.all()   
     
-    return render(request,"app-invoiceAdd.html")
+    if request.method == 'POST':
+        # สร้าง Invoice หลัก
+        invoice = Invoice.objects.create(
+            customer_id=request.POST['customer'],
+            seller_id=request.POST['seller'],
+            date=request.POST['date'],
+            due_date=request.POST['due_date'],
+            notes=request.POST.get('notes', '')
+        )
+        # รับข้อมูลสินค้าแต่ละรายการ (อาจเป็น list จาก JS)
+        items = request.POST.getlist('items')  # สมมติ items เป็น list ของ dict
+        for item in items:
+            InvoiceItem.objects.create(
+                invoice=invoice,
+                product_id=item['product_id'],
+                quantity=item['quantity'],
+                price=item['price'],
+                discount=item.get('discount', 0),
+                tax=item.get('tax', 0),
+                total=item['total']
+            )
+        return redirect('...')
+
+
+
+
+
+
+    
+    return render(request, 'app-invoiceAdd.html', {
+        'customers': customers,
+        'sellers': sellers,
+        'products': products, 
+    })
+   
 
 
 
@@ -1116,6 +1173,7 @@ def Circulation2(request):
         
         
     
+        
         
         
         

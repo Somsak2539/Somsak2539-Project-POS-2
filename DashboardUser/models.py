@@ -22,6 +22,8 @@ class Customer(models.Model):
     address = models.TextField("ที่อยู่")
     phone = models.CharField("เบอร์โทร", max_length=20, blank=True, null=True)
     email = models.EmailField("อีเมล", blank=True, null=True)
+    tax_id = models.CharField("เลขประจำตัวผู้เสียภาษี", max_length=20, blank=True, null=True)
+    
 
     def __str__(self):
         return self.name

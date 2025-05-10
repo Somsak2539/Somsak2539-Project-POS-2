@@ -26,8 +26,8 @@ from .models import Receipt, ReceiptItem
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'phone', 'email')
-    search_fields = ('name', 'phone', 'email')
+    list_display = ('name', 'phone', 'email','tax_id')
+    search_fields = ('name', 'phone', 'email','tax_id')
 
 
 @admin.register(Seller)

@@ -61,5 +61,35 @@ class InvoiceForm(forms.ModelForm):
 class CustomerForm(forms.ModelForm):
     class Meta:
         model = Customer
-        fields = ['name', 'address', 'phone', 'email']  # ลบ 'tax_id' ออก
+        fields = ['name', 'address', 'phone', 'email', 'tax_id']  # เพิ่ม tax_id เข้าไป
+        labels = {
+            'name': 'ชื่อลูกค้า',
+            'address': 'ที่อยู่',
+            'phone': 'เบอร์โทร',
+            'email': 'อีเมล',
+            'tax_id': 'เลขที่ผู้เสียภาษี',
+        }
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200',
+                'placeholder': 'ชื่อลูกค้า'
+            }),
+            'address': forms.Textarea(attrs={
+                'class': 'form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200',
+                'rows': 3,
+                'placeholder': 'ที่อยู่'
+            }),
+            'phone': forms.TextInput(attrs={
+                'class': 'form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200',
+                'placeholder': 'เบอร์โทร'
+            }),
+            'tax_id': forms.TextInput(attrs={
+                'class': 'form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200',
+                'placeholder': 'เลขที่ผู้เสียภาษี'
+            }),
+            'email': forms.EmailInput(attrs={
+                'class': 'form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200',
+                'placeholder': 'example@email.com'
+            }),
+        }
 

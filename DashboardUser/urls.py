@@ -36,11 +36,14 @@ path('Sellers/', views.Sellers, name='Sellers'),  # สำหรับกรณ�
 path('Sellers/<int:seller_id>/', views.Sellers, name='seller_edit'),  # สำหรับการแก้ไขข้อมูล
 path('Sellers/<int:seller_id>/delete/', views.seller_delete, name='seller_delete'),
 path('Customers/', views.Customers, name='Customers'),
-path('invoiceList/', views.invoiceList, name='invoiceList'),
+path('customers/', views.Customers, name='Customers'),
+path('customers/add/', views.add_customer, name='add_customer'),
+path('customers/<int:customer_id>/edit/', views.customer_edit, name='customer_edit'),
+path('customers/<int:customer_id>/delete/', views.customer_delete, name='customer_delete'),
+path('invoiceList/', views.invoicelist, name='invoiceList'),
 path('Drafducument/', views.Drafducument, name='Drafducument'),
 path('recriptAdd/', views.recriptAdd, name='recriptAdd'),
 path('recriptRecord/', views.recriptRecord, name='recriptRecord'),
 path('add-invoice/', views.add_invoice, name='add_invoice'),
-path('add-customer/', views.add_customer, name='add_customer'),
 
 ]
