@@ -40,8 +40,8 @@ from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import redirect, reverse
 
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Seller, Customer, Invoice,InvoiceItem  # เพิ่ม Invoice model
-from .forms import SellerForm, InvoiceForm, CustomerForm
+from .models import Seller, Customer, Invoice,InvoiceItem, Product
+from .forms import SellerForm, InvoiceForm, CustomerForm, InvoiceItemFormSet
 from .models import Customer
 from productapp.models import Product1
 
@@ -144,32 +144,40 @@ def Customers(request):
 
 
 def invoiceAdd(request):
+    if request.method == 'POST':
+        form = InvoiceForm(request.POST)
+        if form.is_valid():
+            invoice = form.save(commit=False)
+            invoice.save()
+            
+            formset = InvoiceItemFormSet(request.POST, instance=invoice)
+            if formset.is_valid():
+                formset.save()
+                
+                # อัพเดทสต็อกถ้าเลือก update_stock
+                if invoice.update_stock:
+                    for item in invoice.items.all():
+                        product = item.product
+                        product.stock -= item.quantity
+                        product.save()
+                
+                messages.success(request, 'บันทึกข้อมูลสำเร็จ')
+                return redirect('app_invoiceAdd')
+    else:
+        form = InvoiceForm()
+        formset = InvoiceItemFormSet()
+    
     customers = Customer.objects.all()
     sellers = Seller.objects.all()
-    products = Product1.objects.all()   
+    products = Product1.objects.all()
     
-    if request.method == 'POST':
-        # สร้าง Invoice หลัก
-        invoice = Invoice.objects.create(
-            customer_id=request.POST['customer'],
-            seller_id=request.POST['seller'],
-            date=request.POST['date'],
-            due_date=request.POST['due_date'],
-            notes=request.POST.get('notes', '')
-        )
-        # รับข้อมูลสินค้าแต่ละรายการ (อาจเป็น list จาก JS)
-        items = request.POST.getlist('items')  # สมมติ items เป็น list ของ dict
-        for item in items:
-            InvoiceItem.objects.create(
-                invoice=invoice,
-                product_id=item['product_id'],
-                quantity=item['quantity'],
-                price=item['price'],
-                discount=item.get('discount', 0),
-                tax=item.get('tax', 0),
-                total=item['total']
-            )
-        return redirect('...')
+    return render(request, 'app-invoiceAdd.html', {
+        'form': form,
+        'formset': formset,
+        'customers': customers,
+        'sellers': sellers,
+        'products': products,
+    })
 
 
 
@@ -1216,7 +1224,7 @@ def Circulation2(request):
             "weekly_profit1": weekly_profit_list,
             "monthly_profit1": monthly_profit_list,
             "total_valueShop":total_valueShop,
-            
+            "redirect_url": '/invoiceList/',
           
       
            
@@ -1249,7 +1257,6 @@ def Circulation2(request):
     
     
    
-    
     
     
     
@@ -1337,4 +1344,63 @@ def add_invoice(request):
     else:
         form = InvoiceForm()
     return render(request, 'add_invoice.html', {'form': form})
+
+@csrf_exempt
+def save_invoice(request):
+    if request.method == 'POST':
+        try:
+            # รับข้อมูลจาก form
+            data = json.loads(request.POST.get('invoice_data', '{}'))
+            
+            # สร้าง Invoice ใหม่ (ใช้เฉพาะฟิลด์ที่มีในโมเดล)
+            invoice = Invoice.objects.create(
+                date=data['date'],
+                due_date=data['due_date'],
+                customer_id=data['customer_id'],
+                seller_id=data['seller_id'],
+                notes=data['notes'],
+                update_stock=data['update_stock'],
+                include_vat=data['include_vat']
+            )
+            
+            # บันทึกรายการสินค้า
+            for item in data['items']:
+                InvoiceItem.objects.create(
+                    invoice=invoice,
+                    product_id=item['product_id'],
+                    unit_price=item['price'],      # ใช้ price จาก JS map เข้า unit_price
+                    quantity=item['quantity'],
+                    discount=item['discount'],
+                    Tax=item['tax']                # ใช้ tax จาก JS map เข้า Tax (ตัว T ใหญ่)
+                )
+                
+                # อัพเดทสต็อกถ้าเลือก update_stock
+                if data['update_stock']:
+                    product = Product.objects.get(id=item['product_id'])
+                    product.stock -= item['quantity']
+                    product.save()
+            
+            return JsonResponse({
+                'success': True,
+                'message': 'บันทึกข้อมูลสำเร็จ',
+                'redirect_url': '/invoiceList/'
+            })
+            
+        except Exception as e:
+            return JsonResponse({
+                'success': False,
+                'message': str(e)
+            })
+    
+    return JsonResponse({
+        'success': False,
+        'message': 'Invalid request method'
+    })
+
+
+
+
+
+
+
 

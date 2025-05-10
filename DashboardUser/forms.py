@@ -10,11 +10,20 @@ class ProductSelect2Widget(s2forms.ModelSelect2Widget):
 class InvoiceItemForm(forms.ModelForm):
     class Meta:
         model = InvoiceItem
-        fields = '__all__'
+        fields = [
+            'product',
+            'quantity',
+            'unit_price',
+            'discount',
+            'Tax'
+        ]
         widgets = {
-            'product': ProductSelect2Widget,
+            'quantity': forms.NumberInput(attrs={'min': 1}),
+            'unit_price': forms.NumberInput(attrs={'step': '0.01', 'min': 0}),
+            'discount': forms.NumberInput(attrs={'min': 0, 'max': 100}),
+            'Tax': forms.NumberInput(attrs={'value': 7, 'readonly': True}),
         }
-        
+
 class SellerForm(forms.ModelForm):
     class Meta:
         model = Seller
@@ -53,11 +62,22 @@ class SellerForm(forms.ModelForm):
 class InvoiceForm(forms.ModelForm):
     class Meta:
         model = Invoice
-        exclude = ['invoice_number', 'created_at']  # invoice_number is auto-generated, created_at is auto_now_add
+        fields = [
+            'document_type',
+            'customer',
+            'seller',
+            'date',
+            'due_date',
+            'notes',
+            'update_stock',
+            'include_vat'
+        ]
         widgets = {
-            'date': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-input'}),
-            'due_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-input'}),
-        }  
+            'date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'due_date': forms.DateInput(attrs={'type': 'date'}),
+            'notes': forms.Textarea(attrs={'rows': 3}),
+        }
+
 class CustomerForm(forms.ModelForm):
     class Meta:
         model = Customer
@@ -92,4 +112,12 @@ class CustomerForm(forms.ModelForm):
                 'placeholder': 'example@email.com'
             }),
         }
+
+InvoiceItemFormSet = forms.inlineformset_factory(
+    Invoice,
+    InvoiceItem,
+    form=InvoiceItemForm,
+    extra=1,
+    can_delete=True
+)
 

@@ -5,6 +5,7 @@ from django.db import models
 from django.apps import AppConfig
 
 
+
 class Product(models.Model):
 
     name = models.CharField(max_length=50)

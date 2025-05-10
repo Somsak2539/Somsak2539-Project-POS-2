@@ -71,6 +71,8 @@ class Invoice(models.Model):
     due_date = models.DateField("กำหนดชำระ", blank=True, null=True)
     notes = models.TextField("หมายเหตุ", blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    update_stock = models.BooleanField("อัพเดทสต็อก", default=False)
+    include_vat = models.BooleanField("รวม VAT", default=False)
 
     def __str__(self):
         return f"{self.get_document_type_display()} - {self.invoice_number}"

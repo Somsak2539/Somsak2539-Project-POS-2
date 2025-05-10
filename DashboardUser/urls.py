@@ -45,5 +45,6 @@ path('Drafducument/', views.Drafducument, name='Drafducument'),
 path('recriptAdd/', views.recriptAdd, name='recriptAdd'),
 path('recriptRecord/', views.recriptRecord, name='recriptRecord'),
 path('add-invoice/', views.add_invoice, name='add_invoice'),
+path('save_invoice/', views.save_invoice, name='save_invoice'),
 
 ]
